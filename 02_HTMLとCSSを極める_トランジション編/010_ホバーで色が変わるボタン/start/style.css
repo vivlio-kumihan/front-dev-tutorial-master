@@ -1,0 +1,21 @@
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+}
+.btn {
+  font-size: 20px;
+  font-weight: 900;
+  padding: 10px 40px;
+  border: 2px solid #333;
+  /* transition: all .3s; */ /* 設定している属性を全て */
+  /* transition: color .3s; */ /* color属性だけに適応 */
+  transition: background-color 1s ease 3s; /* 第3引数：変化のタイミング、第4引数：変化を始めるまでの時間 */
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #333;
+}
