@@ -1,5 +1,6 @@
 #container {
-  padding: 1rem;
+  position: relative;
+  padding: 1.5rem;
   background-color: gray;
 }
 
@@ -9,23 +10,36 @@ div {
   font-size: 1.1em;
   width: 150px;
   height: 150px;
-  box-shadow: 7px 7px 0 0 #000;
 }
 
 .div-1 {
   background: orange;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .div-2 {
+  position: absolute;
   background: tomato;
+  z-index: 20;
 }
 
 .div-3 {
   background: teal;
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  z-index: 50;
 }
 
 .div-4 {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
   width: 80px;
   height: 80px;
   background-color: violet;
+  z-index: 100;
 }/*# sourceMappingURL=style.css.map */

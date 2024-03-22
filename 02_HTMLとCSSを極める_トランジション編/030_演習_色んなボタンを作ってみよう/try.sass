@@ -1,0 +1,53 @@
+$cWhite: white
+$cBlack: black
+
+.try 
+  .btn 
+    display: inline-block
+    position: relative
+    margin: 10px auto
+    padding: 10px 40px
+    font-weight: 600
+    text-decoration: none !important
+    color: $cBlack
+    background-color: $cWhite
+    border: 1px solid $cBlack
+    cursor: pointer
+    transition: all 0.3s
+    &.float:hover
+      color: $cWhite
+      background-color: $cBlack
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
+    &.filled
+      color: $cWhite
+      background-color: $cBlack
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
+      &:hover
+        color: $cBlack
+        background-color: $cWhite
+        box-shadow: unset
+    &.letter-spacing:hover
+      letter-spacing: .15rem
+      color: $cWhite
+      background-color: $cBlack
+      
+    &.shadow:hover
+      transform: translate(-2px, -2px)
+      box-shadow: 5px 5px 0px $cBlack
+    &.solid
+      border-radius: 7px
+      box-shadow: 2px 2px 0px $cBlack
+      &:hover
+        transform: translate(2px, 2px)
+        box-shadow: unset
+
+
+      
+
+        
+
+
+
+    /* ここにボタンのスタイルを追加していこう */
+  
+
