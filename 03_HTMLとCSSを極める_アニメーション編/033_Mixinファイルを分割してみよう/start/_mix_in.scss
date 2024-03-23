@@ -1,0 +1,36 @@
+// 『_（アンダーバー）＋ファイル名.sass』とするとリロード時にCSSファイルへと変換されない。
+// アンダーバーを付与するだけで、他所のsassファイルからいつでも呼び出せる状態になるわけ。
+
+@mixin animation( // アニメーション名（key-frameでも必要になる名称）
+
+  $name,
+  // アニメーション時間
+  $duration: 1s,
+  // タイミング関数
+  $timing: ease,
+  // アニメーションが始まるまでの時間
+  $delay: 0s,
+  // directionとの組み合わせだと奇数がいいかも
+  $iteration: 1,
+  // 行くだけ
+  //   nomal
+  // 逆転
+  //   reverse
+  // 往復
+  //   alternate
+  // 往復を逆転
+  //   alternate-reverse
+  $direction: normal,
+  // アニメーションの最後の状態を保持するか否か
+  // 初期値  nomal,　保持　forwards
+  $fill: forwards) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    timing-function: $timing;
+    delay: $delay;
+    iteration-count: $iteration;
+    direction: $direction;
+    fill-mode: $fill;
+  }
+}
