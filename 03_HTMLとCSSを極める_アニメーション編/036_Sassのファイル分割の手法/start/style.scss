@@ -1,0 +1,9 @@
+@use 'global' as g;
+
+h1 {
+  color: g.$col_blue;
+}
+
+h2 {
+  color: g.$col_red;
+}
