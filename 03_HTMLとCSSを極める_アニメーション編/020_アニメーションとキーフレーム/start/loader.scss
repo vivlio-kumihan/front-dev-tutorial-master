@@ -10,14 +10,32 @@ body {
   height: 100px;
   background-color: $cBlack;
   animation: sk-bouncedelay 1.4s;
+  animation-timing-function: ease;
+  // アニメーションが始まるまでの時間を調整する。
+  animation-delay: 3s;
+  // アニメーションを逆転させる。
+  // animation-direction: reverse;
+  // アニメーションを繰り返す回数を指定する。
+  animation-iteration-count: infinite;
+  // 効果を往復する。
+  animation-direction: alternate;
+  animation-direction: alternate-reverse;
+  // 組み合わせだと奇数がいいかも
+  animation-iteration-count: 3;
+  animation-direction: alternate;
+  // アニメーションの最後の状態を保持する。
+  animation-fill-mode: forwards;
+}
+
+.paused {
+  animation-play-state: paused;
 }
 
 @keyframes sk-bouncedelay {
-  from {
+  0%, 50% {
     transform: scale(0);
   }
-
-  to {
-    transform: scale(1);
+  100% {
+      transform: scale(1);
   }
 }

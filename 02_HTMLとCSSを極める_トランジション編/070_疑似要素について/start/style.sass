@@ -16,7 +16,8 @@ $cBlack: black
   transition: color 1s
   overflow: hidden
   z-index: 1
-  span
+  &::before
+    content: ""
     display: inline-block
     position: absolute
     top: 0
@@ -28,5 +29,5 @@ $cBlack: black
     z-index: -1
   &:hover
     color: $cWhite
-    span
+    &::before
       transform: translateX(100%)
