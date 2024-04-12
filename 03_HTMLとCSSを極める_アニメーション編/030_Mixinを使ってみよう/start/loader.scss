@@ -5,14 +5,17 @@ body {
 }
 
 // 引数には属性の値が入る。
+// 引数には初期値を設定できる。
 @mixin animation(
   $name,
   $duration: 1.4s,
   $delay: 3s,
   $timing: cubic-bezier(0.25, 0.1, 0.28, 1.9),
+  // 基本的にnomalが初期値、ここではfowardsにしている。
   $fill-mode: forwards
 ){
   // 属性と値の引き合わせをここで設定。
+  // animationが共通なので省略記法で書いてみる。
   animation: {
     name: $name;
     duration: $duration;
@@ -45,3 +48,4 @@ body {
     background-color: green;
   }
 }
+

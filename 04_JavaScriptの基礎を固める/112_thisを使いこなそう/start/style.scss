@@ -37,7 +37,7 @@ body {
         $fill-mode: both
       );
 
-      @for $i from 1 through 30 {
+      @for $i from 1 through 50 {
           &:nth-child(#{$i}) {
               animation-delay: $i * 0.04s;
           }

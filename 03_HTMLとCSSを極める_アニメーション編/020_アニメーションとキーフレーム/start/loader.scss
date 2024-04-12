@@ -24,7 +24,7 @@ body {
   animation-iteration-count: 3;
   animation-direction: alternate;
   // アニメーションの最後の状態を保持する。
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; // 最初と最後を残すのは`both`
 }
 
 .paused {

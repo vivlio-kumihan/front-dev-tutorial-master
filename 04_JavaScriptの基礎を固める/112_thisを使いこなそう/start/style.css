@@ -153,6 +153,86 @@ body {
 .animate-title-2.inview .char:nth-child(30) {
   animation-delay: 1.2s;
 }
+.animate-title.inview .char:nth-child(31),
+.animate-title-2.inview .char:nth-child(31) {
+  animation-delay: 1.24s;
+}
+.animate-title.inview .char:nth-child(32),
+.animate-title-2.inview .char:nth-child(32) {
+  animation-delay: 1.28s;
+}
+.animate-title.inview .char:nth-child(33),
+.animate-title-2.inview .char:nth-child(33) {
+  animation-delay: 1.32s;
+}
+.animate-title.inview .char:nth-child(34),
+.animate-title-2.inview .char:nth-child(34) {
+  animation-delay: 1.36s;
+}
+.animate-title.inview .char:nth-child(35),
+.animate-title-2.inview .char:nth-child(35) {
+  animation-delay: 1.4s;
+}
+.animate-title.inview .char:nth-child(36),
+.animate-title-2.inview .char:nth-child(36) {
+  animation-delay: 1.44s;
+}
+.animate-title.inview .char:nth-child(37),
+.animate-title-2.inview .char:nth-child(37) {
+  animation-delay: 1.48s;
+}
+.animate-title.inview .char:nth-child(38),
+.animate-title-2.inview .char:nth-child(38) {
+  animation-delay: 1.52s;
+}
+.animate-title.inview .char:nth-child(39),
+.animate-title-2.inview .char:nth-child(39) {
+  animation-delay: 1.56s;
+}
+.animate-title.inview .char:nth-child(40),
+.animate-title-2.inview .char:nth-child(40) {
+  animation-delay: 1.6s;
+}
+.animate-title.inview .char:nth-child(41),
+.animate-title-2.inview .char:nth-child(41) {
+  animation-delay: 1.64s;
+}
+.animate-title.inview .char:nth-child(42),
+.animate-title-2.inview .char:nth-child(42) {
+  animation-delay: 1.68s;
+}
+.animate-title.inview .char:nth-child(43),
+.animate-title-2.inview .char:nth-child(43) {
+  animation-delay: 1.72s;
+}
+.animate-title.inview .char:nth-child(44),
+.animate-title-2.inview .char:nth-child(44) {
+  animation-delay: 1.76s;
+}
+.animate-title.inview .char:nth-child(45),
+.animate-title-2.inview .char:nth-child(45) {
+  animation-delay: 1.8s;
+}
+.animate-title.inview .char:nth-child(46),
+.animate-title-2.inview .char:nth-child(46) {
+  animation-delay: 1.84s;
+}
+.animate-title.inview .char:nth-child(47),
+.animate-title-2.inview .char:nth-child(47) {
+  animation-delay: 1.88s;
+}
+.animate-title.inview .char:nth-child(48),
+.animate-title-2.inview .char:nth-child(48) {
+  animation-delay: 1.92s;
+}
+.animate-title.inview .char:nth-child(49),
+.animate-title-2.inview .char:nth-child(49) {
+  animation-delay: 1.96s;
+}
+.animate-title.inview .char:nth-child(50),
+.animate-title-2.inview .char:nth-child(50) {
+  animation-delay: 2s;
+}
 
 @keyframes kf-animate-chars {
   0% {
