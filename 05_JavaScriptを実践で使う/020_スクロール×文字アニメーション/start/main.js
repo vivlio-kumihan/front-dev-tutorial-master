@@ -1,44 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const ta = new TextAnimation('.animate-title');
-    ta.animate();
 });
 
-// text-animation.jsに以下のコードをカット＆ペースト
-// してファイル分割をしましょう。
-class TextAnimation {
-    constructor(el) {
-        this.DOM = {};
-        this.DOM.el = document.querySelector(el);
-        this.chars = this.DOM.el.innerHTML.trim().split("");
-        this.DOM.el.innerHTML = this._splitText();
+const elms = document.querySelectorAll('.animate-title');
+const cb = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const ta = new TextAnimation(entry.target);
+      ta.animate(); 
+      observer.unobserve(entry.target);
     }
-    _splitText() {
-        return this.chars.reduce((acc, curr) => {
-            curr = curr.replace(/\s+/, '&nbsp;');
-            return `${acc}<span class="char">${curr}</span>`;
-        }, "");
-    }
-    animate() {
-        this.DOM.el.classList.toggle('inview');
-    }
-}
-class TweenTextAnimation extends TextAnimation {
-    constructor(el) {
-        super(el);
-        this.DOM.chars = this.DOM.el.querySelectorAll('.char');
-    }
-    
-    animate() {
-        this.DOM.el.classList.add('inview');
-        this.DOM.chars.forEach((c, i) => {
-            // TweenMax.toでも同じ意味。バージョン３以降はgsapの使用を推奨している。
-            gsap.to(c, .6, {
-                ease: Back.easeOut,
-                delay: i * .05,
-                startAt: { y: '-50%', opacity: 0},
-                y: '0%',
-                opacity: 1
-            });
-        });
-    }
-}
+  });
+};
+
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0
+};
+
+const io = new IntersectionObserver(cb, options);
+elms.forEach(elm => {
+  io.observe(elm);
+})
