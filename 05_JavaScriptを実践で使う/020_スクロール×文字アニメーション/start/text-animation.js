@@ -1,9 +1,13 @@
 class TextAnimation {
   constructor(el) {
     this.DOM = {};
-    // elがDOMかどうかを判定する。
-    el instanceof HTMLElement
-      ? this.DOM.el = el : this.DOM.el = document.querySelector(el);
+    // => main.jsからの続き
+    // で、一応DOMか文字列化の判定をするという流れ。
+    // やっとわかった。
+    // というより、mainであえてDOMで送ってんだから。。。
+    // 私ごときがいうてもしゃーない。まぁ、要るということで。
+    this.DOM.el = el instanceof HTMLElement
+      ? el : document.querySelector(el);
     this.chars = this.DOM.el.innerHTML.trim().split("");
     this.DOM.el.innerHTML = this._splitText();
   }
@@ -17,6 +21,7 @@ class TextAnimation {
     this.DOM.el.classList.toggle('inview');
   }
 }
+
 class TweenTextAnimation extends TextAnimation {
   constructor(el) {
     super(el);

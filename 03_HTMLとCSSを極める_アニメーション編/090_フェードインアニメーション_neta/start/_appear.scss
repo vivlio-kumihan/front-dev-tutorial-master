@@ -1,0 +1,39 @@
+// 一部しか変わらない場合はmapを使う。
+// プロパティの切り替えはHTMLのクラスで行う。
+// HTMLのクラスに『up』がつけば、
+// プロパティ『up』の値が反映される仕組み。
+$pattern: (
+  "up": translateY(6px),
+  "down": translateY(-6px),
+  "left": translateX(40px),
+  "right": translateX(-40px),
+);
+
+@each $key, $value in $pattern {
+  .appear.#{$key} {
+    & .item {
+      transform: $value;
+    }
+  }
+}
+
+.appear {
+  & .item {
+    // 変更を反映させたい箇所を抜き出すので、
+    // このtransformは削除する。
+    // transform: translateY(6px);
+    transition: all 0.8s;
+    opacity: 0;
+  }
+  &.inview {
+    & .item {
+      transform: none;
+      opacity: 1;
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * .1s;
+        }
+      }
+    }
+  }
+}
