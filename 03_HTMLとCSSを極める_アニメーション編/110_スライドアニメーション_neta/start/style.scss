@@ -1,0 +1,81 @@
+@use 'mixin' as *;
+
+// 画像についての見知を一旦リセット。
+// このやり方で行く。
+// 画像は配置されるとその画像サイズで表示される。
+// コントロールするにはmax-width属性を使う。
+// 親要素に対しての100％。
+img {
+  max-width: 100%;
+  // display: inline-block;の時に要素を上下に動かすもの
+  // img要素に上下余白がある場合に使うと余白が埋まるTips。
+  // ということだったが、resetのCSSで既に設定してあった。
+  // vertical-align: bottom;
+}
+
+.cover-slide {
+  position: relative;
+  // リロードしたら画像は大きくはみ出すのでその対応。
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: orange;
+    z-index: 2;
+  }
+  &.inview {
+    &::after {
+      @include animation(
+        $name: kf-cover-slide
+      )
+    }
+  }
+}
+
+// JSを使わなくてもクラスを付けておく事で、
+// アニメーションを付与できる技
+// 『inde.html』の『.inview』がトリガーとなる。
+@keyframes kf-cover-slide {
+  0% {
+    left: 0;
+    right: 100%;
+  }
+  50% {
+    left: 0;
+    right: 0;
+  }
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}
+
+// 背景画像にもアニメーションをかける。
+// ちなみに、このSASSでは、親と子の逆転をかける技使っている。
+.img-zoom {
+  opacity: 0;
+  .inview & {
+    opacity: 1;
+    @include animation(kf-image-show)
+  }
+}
+
+@keyframes kf-image-show {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  50.1% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
