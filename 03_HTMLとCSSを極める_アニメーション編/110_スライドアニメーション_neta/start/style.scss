@@ -1,21 +1,143 @@
+// // img要素編
+
+// @use 'mixin' as *;
+
+// // 画像についての見知を一旦リセット。
+// // このやり方で行く。
+// // 画像は配置されるとその画像サイズで表示される。
+// // コントロールするにはmax-width属性を使う。
+// // 親要素に対しての100％。
+// img {
+//   max-width: 100%;
+//   // display: inline-block;の時に要素を上下に動かすもの
+//   // img要素に上下余白がある場合に使うと余白が埋まるTips。
+//   // ということだったが、resetのCSSで既に設定してあった。
+//   // vertical-align: bottom;
+// }
+
+// .cover-slide {
+//   position: relative;
+//   // リロードしたら画像は大きくはみ出すのでその対応。
+//   overflow: hidden;
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: orange;
+//     z-index: 2;
+//   }
+//   &.inview {
+//     &::after {
+//       // CSSにアニメーションを使ってトリガーを仕込む技。
+//       @include animation(
+//         $name: kf-cover-slide,
+//         $duration: 1.6s,
+//         $timing-function: ease-in-out,
+//       )
+//     }
+//   }
+// }
+
+// // JSを使わなくてもクラスを付けておく事で、
+// // アニメーションを付与できる技
+// // 『inde.html』の『.inview』がトリガーとなる。
+// @keyframes kf-cover-slide {
+//   0% {
+//     left: 0;
+//     right: 100%;
+//   }
+//   50% {
+//     left: 0;
+//     right: 0;
+//   }
+//   100% {
+//     left: 100%;
+//     right: 0;
+//   }
+// }
+
+// // 背景画像にもアニメーションをかける。
+// // ちなみに、このSASSでは、親と子の逆転をかける技使っている。
+// .img-zoom {
+//   opacity: 0;
+//   .inview & {
+//     opacity: 1;
+//     transition: transform .3s ease;
+//     @include animation(
+//       $name: kf-image-show,
+//       $duration: 1.6s,
+//       $timing-function: ease-in-out,
+//       // mixin.scssのデフォルトでは『$fill-mode: forwards』
+//       // としており、この場合であれば、アニメーション最終の100％時点で
+//       // 『opacity: 1』が残る。
+//       // 後からエフェクトをかけたい場合にエフェクトがかからないから。
+//       $fill-mode: none
+//     );
+//     &:hover {
+//       transform: scale(1.3);
+//     }
+//   }
+// }
+
+// @keyframes kf-image-show {
+//   0% {
+//     opacity: 0;
+//   }
+//   50% {
+//     opacity: 0;
+//   }
+//   50.1% {
+//     transform: scale(1.5);
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+
+// .hover-darken {
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     // これも超絶技。
+//     // 下のレイアーにあるimgをhoverしたら拡大するアニメーションを設定していた。
+//     // こちらのホバーによって効果が上書きされてしまう。
+//     // こちらの擬似要素と下にあるレイアーそれぞれで仕込んだホバーが効くようにする技。
+//     pointer-events: none;
+//     transition: background-color .3s;
+//     z-index: 1;
+//     // あとは、画像が現れてから黒いマスクが覆い被さる効果にしたいので
+//     // アニメーションで出現するタイミングを調整する。
+//     @include animation(
+//       $name: kf-image-show,
+//       $duration: 1.6s,
+//       $timing-function: ease-in-out,
+//       $fill-mode: none
+//     );    
+//   }
+//   &:hover::before {
+//     background-color: rgba($color: #000000, $alpha: .4);
+//   }
+// }
+
+
+// background-image要素編
+
 @use 'mixin' as *;
 
-// 画像についての見知を一旦リセット。
-// このやり方で行く。
-// 画像は配置されるとその画像サイズで表示される。
-// コントロールするにはmax-width属性を使う。
-// 親要素に対しての100％。
 img {
   max-width: 100%;
-  // display: inline-block;の時に要素を上下に動かすもの
-  // img要素に上下余白がある場合に使うと余白が埋まるTips。
-  // ということだったが、resetのCSSで既に設定してあった。
-  // vertical-align: bottom;
 }
 
 .cover-slide {
   position: relative;
-  // リロードしたら画像は大きくはみ出すのでその対応。
   overflow: hidden;
   &::after {
     content: '';
@@ -30,15 +152,14 @@ img {
   &.inview {
     &::after {
       @include animation(
-        $name: kf-cover-slide
+        $name: kf-cover-slide,
+        $duration: 1.6s,
+        $timing-function: ease-in-out,
       )
     }
   }
 }
 
-// JSを使わなくてもクラスを付けておく事で、
-// アニメーションを付与できる技
-// 『inde.html』の『.inview』がトリガーとなる。
 @keyframes kf-cover-slide {
   0% {
     left: 0;
@@ -54,13 +175,20 @@ img {
   }
 }
 
-// 背景画像にもアニメーションをかける。
-// ちなみに、このSASSでは、親と子の逆転をかける技使っている。
 .img-zoom {
   opacity: 0;
   .inview & {
     opacity: 1;
-    @include animation(kf-image-show)
+    transition: transform .3s ease;
+    @include animation(
+      $name: kf-image-show,
+      $duration: 1.6s,
+      $timing-function: ease-in-out,
+      $fill-mode: none
+    );
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 
@@ -72,10 +200,58 @@ img {
     opacity: 0;
   }
   50.1% {
-    transform: scale(2);
+    transform: scale(1.5);
     opacity: 1;
   }
   100% {
     opacity: 1;
+  }
+}
+
+.hover-darken {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: background-color .3s;
+    z-index: 1;
+    @include animation(
+      $name: kf-image-show,
+      $duration: 1.6s,
+      $timing-function: ease-in-out,
+      $fill-mode: none
+    );    
+  }
+  &:hover::before {
+    background-color: rgba($color: #000000, $alpha: .4);
+  }
+}
+
+.bg-img-zoom {
+  background-image: url(images/image-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  // aspect-ratio: 4/3;
+  // これもすごい技。なんで去年教わらなかったのか！！
+  // だから今出会っている。
+  // 大丈夫、選択は間違ってない。
+  // .img-zoomクラスで設定した効果を引き継げる。
+  @extend .img-zoom;
+}
+
+// background-imageで画像を設定するとアスペクト比に応じた
+// 表示に難が生じる。
+// 対応として以下のようなCSSを書く。
+.img-bg50 {
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 60%;
   }
 }
