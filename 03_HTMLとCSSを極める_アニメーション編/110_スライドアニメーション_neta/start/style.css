@@ -14,9 +14,11 @@ img {
   right: 0;
   bottom: 0;
   background-color: orange;
+  opacity: 0;
   z-index: 2;
 }
 .cover-slide.inview::after {
+  opacity: 1;
   animation-name: kf-cover-slide;
   animation-duration: 1.6s;
   animation-timing-function: ease-in-out;
@@ -28,16 +30,20 @@ img {
 
 @keyframes kf-cover-slide {
   0% {
-    left: 0;
-    right: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
   }
   50% {
-    left: 0;
-    right: 0;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: right;
   }
   100% {
-    left: 100%;
-    right: 0;
+    transform: scaleX(0);
+    transform-origin: right;
   }
 }
 .img-zoom, .bg-img-zoom {
