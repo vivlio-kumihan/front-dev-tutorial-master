@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.0/destyle.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="gsap.min.js" defer></script>
+  <script src="text-animation.js" defer></script>
+  <script src="scroll-polyfill.js" defer></script>
+  <script src="scroll.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 
 <body>
-  <div id="container">
-    <div class="cover-slide hover-darken inview">
-      <img class="img-zoom" src="images/image-1.jpg" alt="">
-    </div>
-    <div class="cover-slide hover-darken inview">
-      <img class="img-zoom" src="images/image-1.jpg" alt="">
-    </div>
-    <div class="cover-slide hover-darken inview">
-      <img class="img-zoom" src="images/image-1.jpg" alt="">
-    </div>
-    <div class="cover-slide hover-darken inview">
-      <img class="img-zoom" src="images/image-1.jpg" alt="">
-    </div>
-    <div class="cover-slide hover-darken inview">
-      <img class="img-zoom" src="images/image-1.jpg" alt="">
-    </div>
-    <!-- <div class="cover-slide hover-darken inview">
-        <div class="bg-img-zoom img-bg50"></div>
-      </div> -->
+  <div class="cover-slide inview hover-darken">
+    <div class="bg-img-zoom img-bg50"></div>
   </div>
+  <section>
+    <div class="animate-title">Start where you are.</div>
+  </section>
+  <section>
+    <div class="animate-title">Use what you have.</div>
+  </section>
+  <section>
+    <div class="animate-title">Do what you can.</div>
+  </section>
 </body>
 
 </html>
