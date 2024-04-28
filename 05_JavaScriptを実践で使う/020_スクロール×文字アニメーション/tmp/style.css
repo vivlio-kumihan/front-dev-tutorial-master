@@ -11,15 +11,15 @@ section {
   height: 100vh;
   background-color: teal;
 }
-section:nth-of-type(2) {
-  background-color: navy;
+section:nth-child(2) {
+  background-color: mediumvioletred;
 }
-section:nth-of-type(3) {
+section:nth-child(3) {
   background-color: orange;
 }
 
 .animate-title,
-.gsap-animate-title {
+.tween-animate-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,15 +29,15 @@ section:nth-of-type(3) {
   font-size: 2em;
 }
 .animate-title.inview,
-.gsap-animate-title.inview {
+.tween-animate-title.inview {
   opacity: 1;
 }
 .animate-title.inview .char,
-.gsap-animate-title.inview .char {
+.tween-animate-title.inview .char {
   display: inline-block;
 }
 .animate-title .char,
-.gsap-animate-title .char {
+.tween-animate-title .char {
   opacity: 0;
 }
 

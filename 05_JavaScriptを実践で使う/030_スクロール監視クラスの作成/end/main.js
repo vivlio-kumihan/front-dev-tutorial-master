@@ -7,6 +7,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const so = new ScrollObserver('.animate-title', cb);
+    const so = new ScrollObserver('.animate-title', cb, { rootMargin: "0px 0px" });
 });
-

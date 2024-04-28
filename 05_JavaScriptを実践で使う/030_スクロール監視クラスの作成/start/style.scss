@@ -1,7 +1,7 @@
 @use "mixin" as *;
 
 html {
-  font-family: "Teko", sans-serif;
+    font-family: 'Teko', sans-serif;
 }
 
 body {
@@ -12,17 +12,16 @@ section {
   position: relative;
   height: 100vh;
   background-color: teal;
-
-  &:nth-child(2) {
-    background-color: mediumvioletred;
+  &:nth-of-type(2) {
+    background-color: navy;
   }
-  &:nth-child(3) {
+  &:nth-of-type(3) {
     background-color: orange;
   }
 }
 
 .animate-title,
-.tween-animate-title {
+.gsap-animate-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -30,15 +29,12 @@ section {
   color: white;
   opacity: 0;
   font-size: 2em;
-
   &.inview {
     opacity: 1;
-
     & .char {
       display: inline-block;
     }
   }
-
   & .char {
     opacity: 0;
   }
@@ -51,12 +47,11 @@ section {
     $timing-function: cubic-bezier(0.39, 1.57, 0.58, 1),
     $fill-mode: both
   );
-
   @for $i from 1 through 30 {
     &:nth-child(#{$i}) {
-      animation-delay: $i * 0.04s;
+        animation-delay: $i * 0.04s;
     }
-  }
+  }  
 }
 
 @keyframes kf-animate-chars {
@@ -64,7 +59,6 @@ section {
     opacity: 0;
     transform: translateY(-50%);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);

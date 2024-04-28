@@ -1,20 +1,20 @@
+
 class TextAnimation {
   constructor(el) {
+    console.log(el);
     this.DOM = {};
-    // => main.jsからの続き
-    // で、一応DOMか文字列化の判定をするという流れ。
-    // やっとわかった。
-    // というより、mainであえてDOMで送ってんだから。。。
-    // 私ごときがいうてもしゃーない。まぁ、要るということで。
-    this.DOM.el = el instanceof HTMLElement
-      ? el : document.querySelector(el);
+    // クラスへの引数にDOMを渡しているのだから大丈夫なはずなのだが、
+    // 要素名が渡ってきた場合の対応を一応しているという理解でいいのかな。
+    this.DOM.el = el instanceof HTMLElement 
+                    ? el 
+                    : document.querySelector(el) 
     this.chars = this.DOM.el.innerHTML.trim().split("");
     this.DOM.el.innerHTML = this._splitText();
   }
   _splitText() {
     return this.chars.reduce((acc, curr) => {
-        curr = curr.replace(/\s+/, '&nbsp;');
-        return `${acc}<span class="char">${curr}</span>`;
+      curr = curr.replace(/\s+/, '&nbsp;');
+      return `${acc}<span class="char">${curr}</span>`;
     }, "");
   }
   animate() {
@@ -22,22 +22,20 @@ class TextAnimation {
   }
 }
 
-class TweenTextAnimation extends TextAnimation {
+class GsapTextAnimation extends TextAnimation {
   constructor(el) {
     super(el);
     this.DOM.chars = this.DOM.el.querySelectorAll('.char');
   }
-  
   animate() {
     this.DOM.el.classList.add('inview');
-    this.DOM.chars.forEach((c, i) => {
-      // TweenMax.toでも同じ意味。バージョン３以降はgsapの使用を推奨している。
+    this.DOM.chars.forEach((c, idx) => {
       gsap.to(c, .6, {
-          ease: Back.easeOut,
-          delay: i * .05,
-          startAt: { y: '-50%', opacity: 0},
-          y: '0%',
-          opacity: 1
+        ease: Back.easeOut,
+        delay: idx * .05,
+        startAt: { y: '-50%', opacity: 0},
+        y: '0%',
+        opacity: 1,
       });
     });
   }

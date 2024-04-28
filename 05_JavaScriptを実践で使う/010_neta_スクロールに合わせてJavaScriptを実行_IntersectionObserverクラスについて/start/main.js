@@ -188,60 +188,168 @@
 // const obj2 = new MyObj();
 // obj2.printFullName();
 
-//////////////////////////////////////////////////////////////////////
-// CSSアニメーションを元にしたクラスと継承したクラスはGSAPを使うという大技。
+// //////////////////////////////////////////////////////////////////////
+// // CSSアニメーションを元にしたクラスと継承したクラスはGSAPを使うという大技。
 
-// クラスの継承
-document.addEventListener('DOMContentLoaded', function () {
-  // オリジナルのクラスからインスタンスを生成する。
-  const ta = new TextAnimation('.animate-title');
-  // 継承のクラスからインスタンスを生成する。
-  const tta = new TweenTextAnimation('.tween-animate-title');
-  // クラス・メソッドを充ててアニメーションを実行。
-  ta.animate();
-  tta.animate();
-});
+// // クラスの継承
+// document.addEventListener('DOMContentLoaded', function () {
+//   // オリジナルのクラスからインスタンスを生成する。
+//   const ta = new TextAnimation('.animate-title');
+//   // 継承のクラスからインスタンスを生成する。
+//   const tta = new TweenTextAnimation('.tween-animate-title');
+//   // クラス・メソッドを充ててアニメーションを実行。
+//   ta.animate();
+//   tta.animate();
+// });
 
-class TextAnimation {
-  constructor(el) {
-    // 一つの方法
-    // 変数の中身が『DOM』か『それ以外』かを視覚化させる。
-    this.DOM = {};
-    this.DOM.el = document.querySelector(el);
-    this.chars = this.DOM.el.innerHTML.trim().split("");
-    this.DOM.el.innerHTML = this._splitText();
-  }
-  _splitText() {
-    return this.chars.reduce((acc, curr) => {
-      curr = curr.replace(/\s+/, '&nbsp;');
-      return `${acc}<span class="char">${curr}</span>`;
-    }, "");
-  }
-  animate() {
-    this.DOM.el.classList.toggle('inview');
-  }
-}
+// class TextAnimation {
+//   constructor(el) {
+//     // 一つの方法
+//     // 変数の中身が『DOM』か『それ以外』かを視覚化させる。
+//     this.DOM = {};
+//     this.DOM.el = document.querySelector(el);
+//     this.chars = this.DOM.el.innerHTML.trim().split("");
+//     this.DOM.el.innerHTML = this._splitText();
+//   }
+//   _splitText() {
+//     return this.chars.reduce((acc, curr) => {
+//       curr = curr.replace(/\s+/, '&nbsp;');
+//       return `${acc}<span class="char">${curr}</span>`;
+//     }, "");
+//   }
+//   animate() {
+//     this.DOM.el.classList.toggle('inview');
+//   }
+// }
 
-// クラスの継承
-// class NewClassName extends OriginClassName {}
-class TweenTextAnimation extends TextAnimation {
-  // 初期値も引き継ぐ
-  // 元のconstructor()関数がとっている引数と同じものを投げる。
-  // super()関数で受ける。これで引き継ぎ完了。
-  constructor(el) {
-    super(el);
-    this.DOM.chars = this.DOM.el.querySelectorAll('.char');
-  }
-  animate() {
-    this.DOM.el.classList.add('inview');
-    this.DOM.chars.forEach((c, idx) => {
-      gsap.to(c, .6, {
-        ease: Back.easeOut,
-        delay: idx * .05,
-        startAt: { y: '-50%', opacity: 0},
-        y: '0%',
-        opacity: 1,
-      });
-    });
-  }
-}
+// // クラスの継承
+// // class NewClassName extends OriginClassName {}
+// class TweenTextAnimation extends TextAnimation {
+//   // 初期値も引き継ぐ
+//   // 元のconstructor()関数がとっている引数と同じものを投げる。
+//   // super()関数で受ける。これで引き継ぎ完了。
+//   constructor(el) {
+//     super(el);
+//     this.DOM.chars = this.DOM.el.querySelectorAll('.char');
+//   }
+//   animate() {
+//     this.DOM.el.classList.add('inview');
+//     this.DOM.chars.forEach((c, idx) => {
+//       gsap.to(c, .6, {
+//         ease: Back.easeOut,
+//         delay: idx * .05,
+//         startAt: { y: '-50%', opacity: 0},
+//         y: '0%',
+//         opacity: 1,
+//       });
+//     });
+//   }
+// }
+
+// IntersectionObserverクラスでスクロールの挙動に合わせたイベントを作る。
+
+// // その1
+// // 監視対象となる要素を収集。
+// const child = document.querySelector('.child');
+// // このコールバック関数には、対象が監視区域への出入りで起こすイベントを登録しておく。
+// // 今は、監視区域の出入りに反応してアラートを出す関数にしている。
+// const cb = () => {
+  //   alert("intersection!");
+  // };
+  // // 交差点を監視するクラスからインスタンスを生成する。
+  // // 引数にはコールバック関数を入れる。
+  // const io = new IntersectionObserver(cb);
+  // // io.observe()関数に要素を引数として監視を開始する。
+  // io.observe(child);
+  
+// // その2
+// // コールバック関数にconsole.log()を仕込んで動かしてみる。
+// const children = document.querySelectorAll('.child');
+// // コールバック関数には2つの引数を取る。
+// // 登録するもの（複数）と監視者
+// const cb = (entries, observer) => {
+//   entries.forEach(target => {
+//     if (target.isIntersecting) {
+//       console.log('inview');
+//     } else {
+//       console.log('out view');
+//     }
+//   });
+// };
+// // インスタンスを生成して。。。
+// const io = new IntersectionObserver(cb);
+// // 監視開始。
+// children.forEach(child => {
+//   io.observe(child);
+// })
+
+// // その3
+// // 対象が一度監視区域に入ったら以降は監視を解除する。
+// // 予め予定されている引数のobserverに監視をやめるようメソッドを送る。
+// // これは押さえておかないといけない動き。
+// const children = document.querySelectorAll('.child');
+// const cb = (entries, observer) => {
+//   entries.forEach(target => {
+//     if (target.isIntersecting) {
+//       console.log('inview');
+//       // targetはDOMだからいろんなメソッド持っている。
+//       // console.log(target);
+//       // .targetメソッドは要素を返すよ。
+//       // で、unobserveメソッドで対象を監視から外す命令な訳だ。
+//       observer.unobserve(target.target);
+//     } else {
+//       console.log('out view');
+//     }
+//   });
+// };
+
+// const io = new IntersectionObserver(cb);
+// children.forEach(child => {
+//   io.observe(child);
+// })
+
+// その3
+// 監視区域に入ったら現れ、出る時に消える
+// 実際的なアニメーションを作る。
+// IntersectionObserverクラスに渡す領域を調整するオプションの話。
+const children = document.querySelectorAll('.child');
+
+const cb = (entries, observer) => {
+  entries.forEach(target => {
+    // IntersectionObserverクラスのisIntersectingメソッドで
+    // スクリーンに入った時にtrueを返す。
+    if (target.isIntersecting) {
+      // targetメソッドを充てないとクラスを付与できないよ。
+      target.target.classList.add('appear');
+    } else {
+      target.target.classList.remove('appear');
+    }
+  });
+};
+
+const options = {
+  // 交差対象を変更することができる。
+  // デフォルトではwindow。
+  // ほぼほぼ使わない。
+  root: null,
+  // マストで使う。どのタイミングで発火するかを調整する。
+  // 上下辺から300px内側に発火タイミングのラインがある。
+  rootMargin: '-300px 0px',
+  // アニメーション始まり：
+  //     ラインの『下辺』と対象の『上辺』が接するとアニメーションが発火。
+  // アニメーション終わり：
+  //     ラインの『上辺』と対象の『下辺』が接するとアニメーションが発火。
+
+  // 対象の上辺か下辺どちらかを発火タイミングに変更する。
+  // 内側が0で、外側が1。
+  // 0はデフォルトなんで意味なしだよ。
+  threshold: 0
+};
+
+const io = new IntersectionObserver(cb, options);
+
+// インスタンスへ監視したい『DOM』を渡すことでスタートする。
+children.forEach(child => {
+  // 画面の出入りの際に、生成したインスタンスの『クラスで登録したコールバック関数』が呼ばれる。
+  io.observe(child);
+})

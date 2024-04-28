@@ -304,35 +304,90 @@
 //   io.observe(child);
 // })
 
-// その3
-// 監視区域に入ったら現れ、出る時に消える
-// 実際的なアニメーションを作る。
-// IntersectionObserverクラスに渡す領域を調整するオプションの話。
-const children = document.querySelectorAll('.child');
-const cb = (entries, observer) => {
-  entries.forEach(elem => {
-    if (elem.isIntersecting) {
-      console.log('inview');
-      elem.target.classList.add('appear');
-    } else {
-      console.log('out view');
-      elem.target.classList.remove('appear');
-    }
-  });
-};
+// // その3
+// // 監視区域に入ったら現れ、出る時に消える
+// // 実際的なアニメーションを作る。
+// // IntersectionObserverクラスに渡す領域を調整するオプションの話。
+// const children = document.querySelectorAll('.child');
+// const cb = (entries, observer) => {
+//   entries.forEach(elem => {
+//     if (elem.isIntersecting) {
+//       console.log('inview');
+//       elem.target.classList.add('appear');
+//     } else {
+//       console.log('out view');
+//       elem.target.classList.remove('appear');
+//     }
+//   });
+// };
 
-const options = {
-  // デフォルトではwindowで、それを変更する。
-  // ほぼほぼ使わない。
-  root: null,
-  // マストで使う。
-  rootMargin: '-200px 0px',
-  // 対象物の監視ラインを外側にするか内側にするか。
-  // 内側が0で、外側が1。
-  // 0はデフォルトなんで意味なしだよ。
-  threshold: 0
-};
-const io = new IntersectionObserver(cb, options);
-children.forEach(child => {
-  io.observe(child);
-})
+// const options = {
+//   // デフォルトではwindowで、それを変更する。
+//   // ほぼほぼ使わない。
+//   root: null,
+//   // マストで使う。
+//   rootMargin: '-200px 0px',
+//   // 対象物の監視ラインを外側にするか内側にするか。
+//   // 内側が0で、外側が1。
+//   // 0はデフォルトなんで意味なしだよ。
+//   threshold: 0
+// };
+// const io = new IntersectionObserver(cb, options);
+// children.forEach(child => {
+//   io.observe(child);
+// })
+
+document.addEventListener('DOMContentLoaded', function () {
+  const elms = document.querySelectorAll('.animate-title');
+
+  // 要素を回しているから一つ一つのような勘違いをしてしまったが、
+  // この前で、インスタンスがスプールされているイメージが良い。
+  const cb = (entries, observer) => {
+    console.log(entries);
+    entries.forEach(entry => {
+      // ここのifで画面に入ったかどうかを判断している。
+      // インスタンスに対してisIntersectingメソッドを送ると
+      // 要素が画面に入ったらtrue、出たらfalseを返す。
+      if (entry.isIntersecting) {
+        // sectionなど連続した要素があり、その中の例えば見出しなど
+        // 画面に入ったタイミングで表示させるなどのアニメーションを
+        // 作る際の注意点。
+        // アニメーションのクラスに対してタグ（文字列）で送っちゃダメ！
+        // const ta = new TextAnimation('.animate-title');
+        // 必ずDOM（オブジェクト）で送らないとバグを生む原因になる。
+        // => text-animation.jsへ続く
+        const ta = new TextAnimation(entry.target);
+        ta.animate(); 
+        // 初回に発動したらもう監視対象から外すよという命令
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0
+  };
+
+  // この2行がメインの命令。////////////////////////////////////////
+  // スクロールの監視をするクラスを定義しておいて。。。
+  const io = new IntersectionObserver(cb, options);
+  // 取り込んだ要素を回してインスタンスを発生させる。。。
+  elms.forEach(elm => {
+    // そして、それぞれの対象要素にスクロールの監視を起動。
+    // 画面に対象要素の出入りのタイミングでコールバック関数が呼ばれて処理が発動する。。。
+    io.observe(elm);
+  });
+  
+  // elms.forEach(elm => {
+  //   if (elm instanceof HTMLElement) {
+  //     // elm は DOM 要素です
+  //     console.log('This is a DOM element');
+  //   } else {
+  //     // elm は DOM 要素ではありません
+  //     console.log('This is not a DOM element');
+  //   }
+  // });
+});
+
+// if, switch, while, for, doは文ではないからセミコロンは必要ない。

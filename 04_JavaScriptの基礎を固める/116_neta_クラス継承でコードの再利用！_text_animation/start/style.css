@@ -13,21 +13,21 @@ body {
 }
 
 .animate-title,
-.tween-animate-title {
+.gsap-animate-title {
   color: white;
   opacity: 0;
   font-size: 2em;
 }
 .animate-title.inview,
-.tween-animate-title.inview {
+.gsap-animate-title.inview {
   opacity: 1;
 }
 .animate-title.inview .char,
-.tween-animate-title.inview .char {
+.gsap-animate-title.inview .char {
   display: inline-block;
 }
 .animate-title .char,
-.tween-animate-title .char {
+.gsap-animate-title .char {
   opacity: 0;
 }
 
