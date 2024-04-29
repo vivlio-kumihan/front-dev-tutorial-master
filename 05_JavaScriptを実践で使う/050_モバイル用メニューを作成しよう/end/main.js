@@ -12,7 +12,6 @@ class MobileMenu {
   _getEventType() {
     // 2023/10/02時点ではwindowにontouchstartがあれば大丈夫です。
     const isTouchCapable = "ontouchstart" in window;
-
     return isTouchCapable ? "touchstart" : "click";
   }
 

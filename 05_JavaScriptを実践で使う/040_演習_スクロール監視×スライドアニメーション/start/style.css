@@ -153,6 +153,7 @@ img {
 
 .cover-slide {
   position: relative;
+  margin-bottom: 100vh;
   overflow: hidden;
 }
 .cover-slide::after {
