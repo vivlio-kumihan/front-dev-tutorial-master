@@ -129,6 +129,8 @@ https://github.com/tobiasahlin/SpinKit
 
 # アニメーション
 
+
+
 ```scss
 .rect 
   display: inline-block
@@ -163,14 +165,70 @@ https://github.com/tobiasahlin/SpinKit
     transform: scale(1)
 ```
 
+
+
+# @for文
+
+例えば、以下のような繰り返しで表現できるCSSがあった場合に`@for`文で対応する。
+
+```SCSS
+.sk-chase-dot:nth-of-type(1) { animation-delay: -1.1s; }
+.sk-chase-dot:nth-of-type(2) { animation-delay: -1.0s; }
+...
+...
+.sk-chase-dot:nth-of-type(6) { animation-delay: -0.6s; }
+
+.sk-chase-dot:nth-of-type(1):before { animation-delay: -1.1s; }
+.sk-chase-dot:nth-of-type(2):before { animation-delay: -1.0s; }
+...
+...
+.sk-chase-dot:nth-of-type(6):before { animation-delay: -0.6s; }
+```
+
+## 式
+
+`@for` [index（変数・インデックス）] 
+`from` [1回 ==> 1] 
+`through` [繰り返す要素の数（回数）]
+`{繰り返したい処理}`
+
+__例文__
+
+```SCSS
+// 繰り返したい要素の数===回数
+$number-of-dots: 6;
+// アニメーションを遅らせるタイミング（必要であれば設定）
+$animation-duration: 1.1s;
+
+@for $idx from 1 through $number-of-dots {
+  $delay: -$animation-duration + ($idx * 0.1s);
+
+  .sk-chase-dot:nth-of-type(#{$idx}) {
+    animation-delay: $delay;
+  }
+
+  .sk-chase-dot:nth-of-type(#{$idx}):before {
+    animation-delay: $delay;
+  }
+}
+```
+
+
+
 # Mix-in
 
-```scss
-$cBlack: black;
+> __animation-duration__
+> 1回のアニメーション周期が完了するまでの再生時間。
 
-body {
-  text-align: center;
-}
+> __animation-delay__
+> アニメーションをいつ開始するかを指定。
+
+> __animation-timing-function__
+> アニメーションがそれぞれの周期の中でどのように進行するかを設定。ease, ease-in, ease-out, ease-in-out等
+
+
+
+```scss
 
 // 引数には属性の値が入る。
 @mixin animation(
