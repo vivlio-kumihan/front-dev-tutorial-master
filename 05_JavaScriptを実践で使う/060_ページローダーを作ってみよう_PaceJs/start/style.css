@@ -1,0 +1,104 @@
+.pace-done > #container {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+#container {
+  opacity: 0;
+}
+
+.pace .pace-progress {
+  display: grid;
+  place-content: center;
+  right: 0;
+  height: 80vh;
+  z-index: 0;
+  background: none;
+  transform: none !important;
+}
+.pace .pace-progress::after {
+  position: fixed;
+  top: 45%;
+  left: 0;
+  width: 100%;
+  content: attr(data-progress-text);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: "Helvetica Neue", "Yo Gothic", "Meiryo", sans-serif;
+}
+.pace .pace-progress-inner {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  animation-name: sk-rotateplane;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+.pace.pace-inactive {
+  display: none;
+}
+
+:root {
+  font-size: 100%;
+}
+
+#container {
+  display: grid;
+  place-content: center;
+}
+#container .preface {
+  margin: 0 auto;
+  padding: 5rem 0 0;
+  font-weight: 900;
+  color: blue;
+}
+#container .preface a {
+  color: rgb(158, 26, 158);
+}
+#container .preface a:hover {
+  color: rgb(224, 40, 224);
+}
+#container .anime {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+#container .anime__square {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-clip: border-box;
+  color: inherit;
+  animation-name: sk-rotateplane;
+  animation-duration: 1.8s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+#container .images img {
+  max-width: 100%;
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
+  }
+}/*# sourceMappingURL=style.css.map */

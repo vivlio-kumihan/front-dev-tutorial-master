@@ -1,0 +1,55 @@
+@use 'assets/sass/assembly' as *;
+
+:root {
+  font-size: 100%;
+}
+
+#container {
+  display: grid;
+  place-content: center;
+  & .preface {
+    margin: 0 auto;
+    padding: 5rem 0 0;
+    font-weight: 900;
+    color: $cTheme;
+    & a {
+      color: $cSubTheme;
+      &:hover {
+        color: $cSubTheme-lt;
+      }
+    }
+  }
+  & .anime {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    &__square {
+      width: 50px;
+      height: 50px;
+      @include bg($color: $cTheme);
+      @include anime(
+        $name: sk-rotateplane,
+        $dur: 1.8s,
+        $itr: infinite,
+        $tim: ease-in-out
+      )
+    }
+  }
+  & .images {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
