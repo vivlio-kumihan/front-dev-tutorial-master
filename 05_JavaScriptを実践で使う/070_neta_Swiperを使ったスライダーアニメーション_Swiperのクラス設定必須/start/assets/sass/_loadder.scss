@@ -1,6 +1,12 @@
 @use 'mixin' as *;
 @use 'variables' as *;
 
+// Pace.jsの改造のコツ
+//        pace-inactive => pace-active
+//        pace-done => pace-running
+//    として関連するスタイルを観察して改造していく。
+//    今回は、教科書と全く違うスタイルを充てている。
+//    あとあとどうなることやら。。。
 // 元ネタは、https://codebyzach.github.io/pace/の中の『Loading Bar』
 
 // ローディング中は非表示、ローディングが終わった時に表示
@@ -13,11 +19,11 @@
 //          #container {
 //            transition: opacity 1s;
 //          }
-.pace-done > #container {
+.pace-done > #global-container {
   transition: opacity 1s;
   opacity: 1;
 }
-#container {
+#global-container {
   opacity: 0;
 }
 
@@ -60,5 +66,17 @@
   }
   &.pace-inactive {
     display: none;
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
   }
 }
