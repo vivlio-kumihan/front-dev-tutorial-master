@@ -59,12 +59,13 @@
 }
 
 .swiper {
-  width: 100vw;
+  width: 50vw;
+  height: 500px;
   overflow: visible !important;
 }
+
 .swiper-slide {
   position: relative;
-  height: 500px;
   overflow: hidden;
 }
 .swiper-slide img {
@@ -103,11 +104,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, calc(-50% + 20px));
+  transform: translate(-50%, calc(-50% + 50px));
   font-size: 25px;
   color: #fff;
   opacity: 0;
-  transition: opacity 3s ease, transform 3s ease;
+  transition: opacity 6s ease, transform 1s ease;
   z-index: 2;
 }
 .hero__footer {
@@ -128,7 +129,7 @@
   width: 7px;
   animation-name: kf-hero-allow-move;
   animation-duration: 2s;
-  animation-timing-function: ease;
+  animation-timing-function: liner;
   animation-delay: 0s;
   animation-iteration-count: infinite;
   animation-direction: normal;
