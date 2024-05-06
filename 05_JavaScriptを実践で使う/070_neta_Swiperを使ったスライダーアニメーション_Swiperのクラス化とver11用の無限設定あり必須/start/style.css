@@ -54,10 +54,6 @@
     transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
   }
 }
-:root {
-  font-size: 100%;
-}
-
 .swiper {
   width: 100vw;
   height: 500px;
@@ -151,4 +147,7 @@
   30% {
     transform: translateY(0);
   }
+}
+:root {
+  font-size: 100%;
 }/*# sourceMappingURL=style.css.map */
