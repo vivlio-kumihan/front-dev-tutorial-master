@@ -44,11 +44,11 @@
   place-content: center;
   height: 100vh;
   &__title {
-    @include positionAlt(50%, 50%, -50%, calc(-50% + 20px));
+    @include positionAlt(50%, 50%, -50%, calc(-50% + 50px));
     font-size: 25px;
     color: #fff;
     opacity: 0;
-    transition: opacity 3s ease, transform 3s ease;
+    transition: opacity 6s ease, transform 1s ease;
     z-index: 2;
   }
   &__footer {
@@ -71,7 +71,7 @@
       $name: kf-hero-allow-move,
       $dur: 2s,
       $itr: infinite,
-      // $tim: liner
+      $tim: liner
     )
   }
   &__scorll-text {
