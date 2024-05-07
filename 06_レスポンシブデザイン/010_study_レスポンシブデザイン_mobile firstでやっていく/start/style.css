@@ -1,0 +1,22 @@
+h1 {
+  color: red;
+}
+
+:root {
+  font-size: 100%;
+}
+
+h1 {
+  color: blue;
+}
+
+@media screen and (min-width: 601px) {
+  h1 {
+    color: red;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  h1 {
+    color: violet;
+  }
+}/*# sourceMappingURL=style.css.map */

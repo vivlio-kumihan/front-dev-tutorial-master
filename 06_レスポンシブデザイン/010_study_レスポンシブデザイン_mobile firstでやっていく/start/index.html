@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- ワンポイント -->
+  <!-- レスポンシブル・デザインをする上で絶対に必要なタグだった。『content="width=device-width』属性 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.0/destyle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- サイトに対してmedia queryの適用する際に、一番最初に覚えておかなくてはいけないこと。 -->
+
+  <!-- その1 ヘッダーに直接記述する方法 -->
+  <!-- max-width => 最大限が600pxまで -->
+  <!-- <link rel="stylesheet" href="./assets/sass/mobile.css" media="screen and (max-width: 600px)"> -->
+  <!-- min-width => 最小限が601px以上 -->
+  <!-- <link rel="stylesheet" href="./style.css" media="screen and (min-width: 601px)"> -->
+
+  <!-- その2 style.scssを参照 -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- <script src="./assets/js/main.js" defer></script> -->
+</head>
+
+<body>
+  <h1>Test</h1>
+</body>
+
+</html>

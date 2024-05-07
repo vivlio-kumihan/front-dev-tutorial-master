@@ -1,0 +1,43 @@
+@use 'mq' as *;
+@use 'variables' as *;
+
+.font-sm {
+  font-size: 14px;
+  @include mq(lg) {
+    font-size: 20px;
+  }
+}
+
+.font-md {
+  font-size: 17px;
+  @include mq(lg) {
+    font-size: 19px;
+  }
+}
+
+.font-lr {
+  font-size: 17px;
+  @include mq(lg) {
+    font-size: 23px;
+  }
+}
+
+.font-lg {
+  font-size: 25px;
+  @include mq(lg) {
+    font-size: 36px;
+  }
+}
+
+.main-title {
+  // 『@extend』スタイルの継承ができる。
+  display: block;
+  margin-bottom: 0;
+  @extend .font-lg;
+  font-weight: 900;
+}
+
+.sub-title {
+  @extend .font-sm;
+  color: $cSubTitle;
+}

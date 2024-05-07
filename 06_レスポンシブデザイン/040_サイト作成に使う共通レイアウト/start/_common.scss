@@ -34,13 +34,60 @@
 }
 
 .main-title {
+  display: block;
+  margin-bottom: 0;
   @extend .font-lg;
   font-weight: 600;
-  margin-bottom: 0;
-  display: block;
 }
 
 .sub-title {
   @extend .font-sm;
   color: $cSubTitle;
+}
+
+// ・sm用から入る。
+
+// ・画面幅に対して90%を維持してコンテンツを伸縮させる。
+//      最小の設定でセンターリングを設定する。
+//      『width: 90%; margin: 0 auto;』
+// ・$contentMaxWidth以上になると横幅は固定させる。
+// ・md以上でflexの切り替え
+// ・切り替え時に横に並んでいく要素をコンテンツの幅に応じて折り返す。
+.content-width {
+  width: 90%;
+  max-width: $contentMaxWidth;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  @include mq(md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+
+.mb-lg {
+  margin-bottom: 80px !important;
+
+  @include mq(lg) {
+    margin-bottom: 150px !important;
+  }
+}
+
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+
+.pb-lg {
+  padding-bottom: 80px !important;
+
+  @include mq(lg) {
+    padding-bottom: 150px !important;
+  }
 }

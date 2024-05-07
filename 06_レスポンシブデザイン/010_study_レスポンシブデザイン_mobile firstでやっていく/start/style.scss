@@ -1,0 +1,61 @@
+@use 'assets/sass/assembly' as *;
+
+:root {
+  font-size: 100%;
+}
+
+// // 驚いた普通のやり方で講義を進めるんだ。
+// // これで覚える。
+
+// // サイトに対してmedia queryの適用する際に、一番最初に覚えておかなくてはいけないこと。
+// // プロパティの意味をここでしっかり頭に刻む。
+// // max-width => 最大限が600pxまで
+// @media screen and (max-width: 600px) {
+//   h1 {
+//     color: blue;
+//   }
+// }
+
+// // min-width => 最小限が601px以上
+// @media screen and (min-width: 601px) {
+//   h1 {
+//     color: red;
+//   }
+// }
+
+
+// 一応紹介するが、『デスク・トップ・ファースト』と『モバイル・ファースト』の書き方
+// 以後、業務を想定してモバイル・ファーストでやっていく。
+
+// // デスク・トップ・ファースト
+// h1 {
+//   color: red;
+// }
+
+// @media screen and (max-width: 600px) {
+//   h1 {
+//     color: blue;
+//   }
+// }
+
+
+// モバイル・ファースト
+h1 {
+  color: blue;
+}
+
+// min-width => 最小限が601px以上
+@media screen and (min-width: 601px) {
+  h1 {
+    color: red;
+  }
+}
+
+// ルティ-ナ・ディスプレイへの対応
+// これは、2022年の設定。以後古くなったらググる。
+@media  (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 2dppx) {
+          h1 {
+            color: violet;
+          }
+        }

@@ -1,0 +1,81 @@
+//////////
+//
+// 初期
+// // モバイル用のスタイル
+// h1 {
+//   color: red;
+//   background: yellow;
+// }
+
+// // デスクトップ用のスタイル
+// @media screen and (min-width: 601px) {
+//   h1 {
+//     color: blue;
+//   }
+// }
+
+// //////////
+// //
+// // media queryの一例（SASS用）
+// h1 {
+//   color: red;
+//   background: yellow;
+
+//   // 480px以上 => スマホを横向きにした時の設定
+//   @media screen and (min-width: 480px) {
+//     color: blue;
+//   }
+//   // 600px以上 => タブレットを縦向きにした時の設定
+//   @media screen and (min-width: 600px) {
+//     color: purple;
+//   }
+//   // 960px以上 => ノートPCの設定
+//   @media screen and (min-width: 960px) {
+//     color: green;
+//   }
+//   // 1280px以上 => デスクトップPCの設定
+//   @media screen and (min-width: 1280px) {
+//     color: orange;
+//   }
+// }
+
+
+//////////
+//
+// 決定版
+
+// 『min-width』の設定を『map（js的で良い）』に保存する。
+$breakpoints: (
+  // 480px以上 => スマホを横向きにした時の設定
+  "sm": "(min-width: 480px)",
+  // 600px以上 => タブレットを縦向きにした時の設定
+  "md": "(min-width: 600px)",
+  // 960px以上 => ノートPCの設定
+  "lg": "(min-width: 960px)",
+  // 1280px以上 => デスクトップPCの設定
+  "xl": "(min-width: 1280px)",
+);
+
+@mixin mq($bp: md) {
+  // 『#{}』=> 変数の展開
+  @media #{map-get($breakpoints, $bp)} {
+    // 各media query内で設定されたパラメータと値が入る。
+    @content;
+  }
+}
+h1 {
+  color: red;
+  background: yellow;
+  @include mq(sm) {
+    color: blue;
+  }
+  @include mq(md) {
+    color: purple;
+  }
+  @include mq(lg) {
+    color: green;
+  }
+  @include mq(xl) {
+    color: orange;
+  }
+}
