@@ -2,8 +2,8 @@ class ScrollObserver {
   // 重要な考え方、
   // constructorで設定するものは『変数』にしておく、
   // 変数を導き出すための関数は切り分けておく。
-  constructor(targetEls, cb, options) {
-    this.targetEls = document.querySelectorAll(targetEls);
+  constructor(targetEmt, cb, options) {
+    this.targetEls = document.querySelectorAll(targetEmt);
     this.cb = cb;
     const defaultOptions = {
       root: null,

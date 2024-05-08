@@ -20,10 +20,6 @@ section:nth-of-type(3) {
 
 .animate-title,
 .gsap-animate-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
   opacity: 0;
   font-size: 2em;

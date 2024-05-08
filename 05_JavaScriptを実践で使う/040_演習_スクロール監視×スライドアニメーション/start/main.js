@@ -6,6 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
       el.classList.remove('inview');
     }
   };
-  const so = new ScrollObserver('.cover-slide', cb, { once: false});
+  const so = new ScrollObserver('.cover-slide', cb, { once: false });
   // so.destroy();
 });

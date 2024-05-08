@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
       el.classList.remove('inview');
     }
   };
-  const so = new ScrollObserver('.animate-title', cb, { once: false});
+  const so = new ScrollObserver('.animate-title', cb, { once: false });
   // 機能を停止させるメソッド
   // so.destroy();
 });
