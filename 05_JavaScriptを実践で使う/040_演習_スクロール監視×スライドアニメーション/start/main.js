@@ -8,4 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   const so = new ScrollObserver('.cover-slide', cb, { once: false });
   // so.destroy();
+
+  
 });

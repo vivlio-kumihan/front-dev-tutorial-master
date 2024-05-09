@@ -37,10 +37,12 @@
 
 .hero {
   position: relative;
+  width: 100%;
   padding-top: 100px;
-  // display: grid;
-  // place-content: center;
-  // height: 100vh;
+  overflow: hidden;
+  @include mq(lg) {
+    overflow: visible
+  }
   &__title {
     @include positionAlt(50%, 50%, -50%, calc(-50% + 50px));
     font-size: 25px;

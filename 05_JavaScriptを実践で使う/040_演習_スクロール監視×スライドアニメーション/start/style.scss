@@ -192,3 +192,28 @@ img {
     padding-top: 60%;
   }
 }
+
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+
+}
+
+.slide-up {
+  width: 500px;
+  height: 350px;
+  background-color: #999;
+  transform: translateY(200px);
+  transition: all 0.5s;
+  opacity: 0;
+  &:nth-last-of-type(2) {
+    background-color: #eee;
+  }
+  &:nth-last-of-type(3) {
+    background-color: #aaa;
+  }
+  &.active {
+    transform: translate(0);
+  }
+}

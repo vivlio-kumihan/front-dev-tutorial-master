@@ -1,2 +1,35 @@
 @use '../globals/' as *;
 @use '../parts/common' as *;
+
+.houses {
+  @extend .content-width;
+  @extend .mb-lg;
+  &__inner {
+    @extend .flex;
+  }
+  &__item {
+    @include mq(md) {
+      // 『display: flex;』の場合、
+      // 要素（この場合は画像）を包含する要素の横幅の指定は、
+      // 『flex-basis』で設定する。
+      @include mq(md) {
+        flex-basis: 50%;
+        margin-bottom: 20px
+      }
+      @include mq(lg) {
+        margin-bottom: 60px
+      }
+    }
+  }
+  &__title {
+    @extend .mb-sm;
+    @extend .font-lr;
+  }
+  &__btn {
+    text-align: center;
+    // 『display: flex;』なので、
+    // 『flex-basis』を100％としてセンタリングというわけ。
+    // 考え方を変える。
+    flex-basis: 100%;
+  }
+}

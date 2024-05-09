@@ -312,3 +312,10 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(result2)
 });
 ```
+
+
+リセットCSS
+ WEBフォント
+ 版面を決める
+  左右のアキ
+  セクション毎の下のアキ

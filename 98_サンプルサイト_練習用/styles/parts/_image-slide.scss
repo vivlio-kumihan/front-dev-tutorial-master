@@ -1,16 +1,9 @@
 @use "../globals" as *;
 
-// this
 // 画像のスライドアニメーション用
-// img {
-//   max-width: 100%;
-// }
-
 .cover-slide {
   position: relative;
-  width: 100%;
   overflow: hidden;
-
   &::after {
     content: "";
     position: absolute;
@@ -22,7 +15,6 @@
     opacity: 0;
     z-index: 2;
   }
-
   &.inview {
     &::after {
       opacity: 1;
@@ -72,27 +64,19 @@
       transform: scale(1.2);
     }
   }
-  & > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
 
 @keyframes kf-image-show {
   0% {
     opacity: 0;
   }
-
   50% {
     opacity: 0;
   }
-
   50.1% {
     transform: scale(1.5);
     opacity: 1;
   }
-
   100% {
     opacity: 1;
   }
@@ -123,15 +107,29 @@
 }
 
 .bg-img-zoom {
-  // background-image: url(images/image-1.jpg);
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
   width: 100%;
+  aspect-ratio: 2/1;
+  @include bg($image: '../images/villa-1.jpg');
   @extend .img-zoom;
+  &.two {
+    background-image: url('../images/villa-2.jpg');
+  }
+  &.three {
+    background-image: url('../images/villa-3.jpg');
+  }
+  &.four {
+    background-image: url('../images/villa-4.jpg');
+  }
+  &.five {
+    background-image: url('../images/villa-5.jpg');
+  }
+  &.six {
+    background-image: url('../images/villa-6.jpg');
+  }
 }
 
 .img-bg50 {
+  // position: relative;
   &::before {
     content: '';
     position: absolute;

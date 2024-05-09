@@ -33,12 +33,14 @@ body {
 //   }
 // }
 
-
+// image
 img {
   max-width: 100%;
   vertical-align: bottom;
 }
 
+
+// margin, padding
 .mb-sm {
   margin-bottom: 16px !important;
 }
@@ -57,7 +59,6 @@ img {
 
 .pb-lg {
   padding-bottom: 80px !important;
-
   @include mq(lg) {
     padding-bottom: 150px !important;
   }
@@ -72,7 +73,6 @@ img {
 .flex {
   display: flex;
   flex-direction: column;
-
   @include mq(md) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -91,28 +91,24 @@ img {
 // font
 .font-sm {
   font-size: 14px;
-
   @include mq(lg) {
     font-size: 16px;
   }
 }
 .font-md {
   font-size: 17px;
-
   @include mq(lg) {
     font-size: 19px;
   }
 }
 .font-lr {
   font-size: 17px;
-
   @include mq(lg) {
     font-size: 23px;
   }
 }
 .font-lg {
   font-size: 25px;
-
   @include mq(lg) {
     font-size: 36px;
   }
@@ -127,5 +123,6 @@ img {
 
 .sub-title {
   @extend .font-sm;
+  @extend .mb-sm;
   color: $cSubTitle;
 }
