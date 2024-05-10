@@ -33,3 +33,87 @@
     flex-basis: 100%;
   }
 }
+
+.popular {
+  // セクション全体の左右にマージンを設けたい。
+  // 背景のアミは左右いっぱいまでにしたレイアウトを
+  // 実現させるためのアイデア。
+
+  // あえて、『__inner』要素を設けてその擬似要素へ
+  // 色をつける作戦。
+  // なお、上下自由な位置から末端までアミを広げるネタも
+  // 入っている。CSS必見。
+
+  // そしてそして、小見出しが外れることはよくある。
+  // その場合は小見出しにマージンを適用させる。
+  &__header {
+    @extend .content-width;
+  }
+  &__inner {
+    position: relative;
+    z-index: 2;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90%;
+      background-color: $cBgGray;
+    }
+  }
+  &__container {
+    // 背景画像のz-indexの前後の操作について、
+    // 思い込みを無くす。
+    // z-indexを使いたい『ためだけに』
+    // position: relative;
+    // を使っていい。
+    position: relative;
+    @extend .flex;
+    @extend .content-width;
+    z-index: 2;
+    @include mq(md) {
+      justify-content: space-between;
+    }
+  }
+  &__item {
+    // 要素（イメージなど）をflexでレイアウトしている時に、
+    // 間隔を調整したい時の要領。
+    @include mq(md) {
+      flex-basis: 47%;
+    }
+    @include mq(lg) {
+      flex-basis: 25%;
+    }
+    @include mq(xl) {
+      flex-basis: 23%;
+    }
+  }
+  &__img {
+    height: 150px;
+    margin-bottom: 5px;
+    @include mq(lg) {
+      height: 335px;
+    }
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      // 画像の位置を変えることができるプロパティ
+      // object-position: top;
+    }
+  }
+  &__title {
+    @extend .mb-sm;
+    @extend .font-md;
+  }
+  &__btn {
+    // ここも大事、反対のことをやりがち。
+    // 上の『houses』と同じ記述をしている。
+    // それは構わない。
+    // 共通化より、修正のしやすさを優先しているから。
+    text-align: center;
+    flex-basis: 100%;
+    @extend .mb-lg;
+  }
+}
