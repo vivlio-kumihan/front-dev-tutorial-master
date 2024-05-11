@@ -13,13 +13,14 @@ body {
 // google fontsに『フォント名: CSS class for a variable style』という項目あり、
 // 以下のように設定してもいちいちクラスをつけるのは面倒でできない。
 // 何か意味があると思うのでここに記しておく。
-// & .noto-sans-jp {
-//   font-family: "Noto Sans JP", sans-serif;
-//   font-optical-sizing: auto;
-//   font-style: normal;
-//   &__md {
-//     font-weight: 500;
-//   }
+.noto-sans-jp {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  &__md {
+    font-weight: 500;
+  }
+}
 // }
 // & .kameron {
 //   font-family: "Kameron", serif;
@@ -40,6 +41,16 @@ img {
   vertical-align: bottom;
 }
 
+ul {
+  padding: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
 
 // margin, padding
 .mb-sm {
