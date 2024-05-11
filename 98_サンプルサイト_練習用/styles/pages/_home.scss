@@ -257,8 +257,11 @@
       justify-content: flex-start;
     }
     &__img {
-      width: 0.7em;
-    }
+      // なぜ、emにしているか！！
+      // 親要素に設定されているfontサイズを大きくすると
+      // ロゴの大きさも追従して大きくしたいから！！
+      // remはほぼ使わないらしい。
+      width: 0.8em;
     &__world {
       color: $cWineRed;
     }
