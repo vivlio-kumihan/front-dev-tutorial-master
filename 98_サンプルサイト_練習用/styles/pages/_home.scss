@@ -1,6 +1,89 @@
 @use '../globals/' as *;
 @use '../parts/common' as *;
 
+#container {
+  position: relative;
+  background-color: $cWhite;
+  transition: .5s;
+  z-index: 50;
+}
+
+// footerから先に作る。
+// 内容がほぼ同じであれば、
+// ハンバーガー・メニューのない構造が簡単なfooterから先に作り
+// それをheaderに汎用するという方針。
+// その際、同じものをコピーして持ってくることに何の違和感も持つ必要は全くない。
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navHeight;
+  z-index: 100;
+
+  &.triggered {
+    background-color: rgba($color: $cWhite, $alpha: 0.9);
+    // 水平方向のオフセット 垂直方向のオフセット ぼかし距離 スプレッド距離 色
+    box-shadow: 0 0 25px -10px rgba($color: $cBlack, $alpha: 1);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    @extend .content-width;
+  }
+
+  & .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    @include mq(md) {
+      flex-direction: row;
+      justify-content: flex-start;
+      font-size: 42px;
+    }
+
+    &__img {
+      width: 0.8em;
+    }
+
+    &__world {
+      color: $cWineRed;
+    }
+  }
+
+  &__nav {
+    @extend .flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    @include mq(lg) {
+      display: block;
+    }
+  
+    & > ul {
+      @extend .flex;
+      gap: 20px;
+      margin: 10px 0 20px;
+      @include mq(md) {
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+      }
+      & > li {
+        & > a {
+          color: $cSubTitle;
+          text-transform: uppercase
+        }
+      }
+    }
+  }
+}
+
 .hero {
   @extend .mb-lg;
 }
@@ -247,11 +330,11 @@
 .footer {
   @extend .content-width;
   padding: 60px 0;
-  & .logo {
+  .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 42px;
+    font-size: 38px;
     @include mq(md) {
       flex-direction: row;
       justify-content: flex-start;
@@ -262,6 +345,7 @@
       // ロゴの大きさも追従して大きくしたいから！！
       // remはほぼ使わないらしい。
       width: 0.8em;
+    }
     &__world {
       color: $cWineRed;
     }
@@ -280,10 +364,12 @@
       @include mq(md) {
         flex-direction: row;
         gap: 30px;
+        align-items: center;
       }
       & > li {
         & > a {
-          color: $cSubTitle;
+          color: $cBlack;
+          text-transform: uppercase
         }
         // // こういう属性の設定も考え方。
         // // 今までだったら先頭のマージンは無しで。。。
@@ -298,4 +384,3 @@
     }
   }
 }
-

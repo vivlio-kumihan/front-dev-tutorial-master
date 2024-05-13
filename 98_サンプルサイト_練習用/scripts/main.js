@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Mobile Menu
+  new MobileMenu();
   // Hero Slider
   const hs = new HeroSlider('.swiper');
   // 最小秒数を1100にしないとバグる。
@@ -39,4 +41,20 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   const slideImageSO = new ScrollObserver('.cover-slide', _slideImageCB, { once: true });
   // slideImageSO.destroy();
+
+  // Header apear bg white, box-shadow
+  // 思い込みが過ぎる。
+  // 無名関数でelに入ったものをオブジェクト内で必ず展開せなあかんなんて誰も言ってない。
+  // トリガーの要素とは違う要素へアニメーションをかけたいのだから。
+  const header = document.querySelector(".header");
+  const _headerBgWhiteCB = function(el, isIntersecting) {
+    if (isIntersecting) {
+      header.classList.remove('triggered');
+    } else {
+      header.classList.add('triggered');
+    }
+  };
+  // onceをfalseにしないといけない。
+  // つまり、トリガーが画面から出たり入ったりを常に監視し続けるオプションをつけないといけない。
+  const headerBgWhiteSO = new ScrollObserver('.nav-trigger', _headerBgWhiteCB, { once: false });
 });
