@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile Menu
   new MobileMenu();
+  
   // Hero Slider
   const hs = new HeroSlider('.swiper');
   // 最小秒数を1100にしないとバグる。

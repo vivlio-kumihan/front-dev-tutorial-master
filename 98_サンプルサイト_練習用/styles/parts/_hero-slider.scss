@@ -1,28 +1,36 @@
 @use "../globals" as *;
 
 .swiper {
-  width: 100vw;
-  height: 500px;
-  // overflow: visible !important;
+  overflow: visible !important;
+  @include mq(lg) {
+    padding: 15px 0 50px;
+  }
 }
 
 .swiper-slide {
-  position: relative;
+  // デフォルトでrelativeに設定してある。
+  // position: relative;
+  height: 500px;
   overflow: hidden;
-  & img {
+  @include mq(lg) {
+    box-shadow: 0 8px 40px -10px rgba($color: #333, $alpha: .8);
+  }
+
+  & > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scale(1.3);
     transition: transform 1.9s ease;
   }
+  
   &::after {
     @include positionAlt(tl);
     content: '';
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 61, 125, 0.1);
-    z-index: 1;
+    background-color: rgba(0, 61, 125, .1);
+    // z-index: 1;
   }
   &-active {
     & > img {
@@ -35,14 +43,14 @@
   } 
 }
 
+// .hero {
+//   @extend .mb-lg;
+// }
+
 .hero {
-  position: relative;
-  width: 100%;
-  padding-top: 100px;
+  padding-top: $navHeight;
   overflow: hidden;
-  @include mq(lg) {
-    overflow: visible
-  }
+
   &__title {
     @include positionAlt(50%, 50%, -50%, calc(-50% + 50px));
     font-size: 25px;
@@ -53,7 +61,7 @@
   }
   &__footer {
     @include positionAlt(
-      calc(100% - 100px), 
+      calc(100% - 110px), 
       50%, 
       -50%, 
       0%
@@ -63,6 +71,14 @@
     color: #fff;
     overflow: hidden;
     z-index: 2;
+    @include mq(lg) {
+      @include positionAlt(
+        calc(100% - 160px), 
+        50%, 
+        -50%, 
+        0%
+      );
+    }
   }
   &__down-allow {
     @include positionAlt(tl);

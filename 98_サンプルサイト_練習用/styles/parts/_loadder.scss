@@ -54,9 +54,9 @@
     }
   }
   & .pace-progress-inner {
-    width: 30px;
-    height: 30px;
-    background-color: $cTheme;
+    width: 40px;
+    height: 40px;
+    background-color: $cWineRed;
     @include anime($name: sk-rotateplane,
       $dur: 1.2s,
       $itr: infinite,

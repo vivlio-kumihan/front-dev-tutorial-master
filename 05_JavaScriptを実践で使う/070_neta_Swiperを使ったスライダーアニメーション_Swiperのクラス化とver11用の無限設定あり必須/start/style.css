@@ -59,10 +59,15 @@
   height: 500px;
   overflow: visible !important;
 }
+.swiper .swiper-wrapper {
+  width: 100vw;
+  overflow: hidden;
+}
 
 .swiper-slide {
   position: relative;
   overflow: hidden;
+  box-shadow: 10px 10px 10px 10px #333;
 }
 .swiper-slide img {
   width: 100%;
