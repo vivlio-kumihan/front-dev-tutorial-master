@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // 複数の要素に対してスクロールに応じたアニメーションをかける場合、
         // 要素名を引数として渡すと、複数の要素分を最初の要素へアニメーションをかけることになり、
         // バグの原因になるので、DOMを渡すことで回避する。
-        const ta = new TextAnimation(entry.target);
+        // const ta = new TextAnimation(entry.target);
+        const ta = new GsapTextAnimation(entry.target);
         ta.animate();
         observer.unobserve(entry.target);
       } else {
