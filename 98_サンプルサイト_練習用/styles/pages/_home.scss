@@ -94,17 +94,13 @@
   }
 }
 
-.hero {
-  @extend .mb-lg
-}
-
 .travel {
   @extend .content-width;
   @extend .mb-lg;
   // インナーの影が配置画像で隠れてしまう件、
   // 『ローカル・・・コンテキスト』を使って
   // z-indexの値で要素を管理する。
-  // 1. 『ローカル・・・コンテキスト』の領域を確保する。
+  // 1. 『ローカル・コンテキスト』の領域を確保する。
   //     position: relative;
   //     z-index: 0;
   // 2. 背面に送りたい要素に対して、
@@ -112,13 +108,13 @@
   //     z-index: -1;
   // これだけ！！！　知らなかった。。。
   &__inner {
-    // // 影を擬似要素にする時は外す。
+    // // 『ローカル・コンテキスト』親要素をオン。
     // position: relative;
+    // z-index: 0;
     @extend .flex;
     justify-content: space-between;
     padding: 15px;
     background-color: $cBgGray;
-    z-index: 0;
     @include mq(md) {
       padding: 50px;
     }
@@ -129,9 +125,9 @@
   &__img {
     height: 300px;
     @extend .mb-sm;
-    box-shadow: inset 0 0 30px $cBlack;
-    // 現在、『ローカル・・・コンテキスト』
-    // のやり方は外している。
+    // // ローカル・コンテキストのやり方
+    // box-shadow: inset 0 0 30px $cBlack;
+    // 現在、『ローカル・コンテキスト』のやり方は外している。
     // // 影を擬似要素にする時は外す。
     &::before {
       position: absolute;
@@ -141,9 +137,11 @@
       height: 100%;
       content: '';
       box-shadow: inset 0 0 30px $cBlack;
-      @include anime($name: opacity, $dur: 1s, $dly: 3s);
       opacity: 0;
       z-index: 3;
+    }
+    &.inview::before {
+      @include anime($name: opacity, $dur: 2s, $dly: 4s);
     }
     @include mq(md) {
       flex-basis: 47%;
@@ -152,9 +150,11 @@
       height: 400px;
     }
     & > img {
-      // // 影を擬似要素にする時は外す。
+      opacity: 1;
+      // // 『ローカル・コンテキスト』子要素オン。
       // position: relative;
       // z-index: -1;
+      
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -169,7 +169,7 @@
     }
     &.inview {
       & .travel__title::before {
-        @include anime($name: scaleX, $dur: 0.3s, $dly: 2.5s);
+        @include anime($name: scaleX, $dur: .3s, $dly: 3.5s);
       }
     }
   }
@@ -185,7 +185,8 @@
       width: 100px;
       height: 1px;
       background-color: $cBlack;
-      transform: scale(0);
+      transform: scaleX(0);
+      z-index: 2;
       transform-origin: right;
       // これもそう。考え方！
       // 初期状態を作る => メディアクエリで切り替えたい=>スマホ表示はなし、
@@ -195,9 +196,9 @@
       }
     }
   }
-  &__discription {
+  &__description {
     @include mq(lg) {
-      margin-bottom: 40px
+      margin-bottom: 40px;
     }
   }
 }

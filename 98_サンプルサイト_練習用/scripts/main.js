@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       el.classList.remove('inview');
     }
   };
-  const textAnimeSO = new ScrollObserver('.animate-title', _textAnimeCB, { once: false });
+  const textAnimeSO = new ScrollObserver('.animate-title', _textAnimeCB, { once: true });
   // 機能を停止させるメソッド
   // textAnimeSO.destroy();
 
@@ -41,6 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
   const slideImageSO = new ScrollObserver('.cover-slide', _slideImageCB, { once: true });
+  // slideImageSO.destroy();
+
+  // Travel Texts
+  const _travelTextsCB = function(el, isIntersecting) {
+    if (isIntersecting) {
+      el.classList.add('inview');
+    } else {
+      el.classList.remove('inview');
+    }
+  };
+  const travelTextsSO = new ScrollObserver('.travel__texts', _travelTextsCB, { once: true });
   // slideImageSO.destroy();
 
   // Header apear bg white, box-shadow

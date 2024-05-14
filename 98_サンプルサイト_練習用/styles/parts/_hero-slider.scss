@@ -43,13 +43,13 @@
   } 
 }
 
-// .hero {
-//   @extend .mb-lg;
-// }
-
 .hero {
   padding-top: $navHeight;
   overflow: hidden;
+  margin-bottom: 80px;
+  @include mq(lg) {
+    margin-bottom: 120px;
+  }
 
   &__title {
     @include positionAlt(50%, 50%, -50%, calc(-50% + 50px));
