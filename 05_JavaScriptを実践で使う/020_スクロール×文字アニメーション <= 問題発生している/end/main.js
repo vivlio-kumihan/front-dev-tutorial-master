@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (entry.isIntersecting) {
                 const ta = new TextAnimation(entry.target);
                 ta.animate();
-                observer.unobserve(entry.target);
+                // observer.unobserve(entry.target);
             } else {
             }
         });

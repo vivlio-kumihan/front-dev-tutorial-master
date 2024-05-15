@@ -19,22 +19,35 @@
 //   const so = new ScrollObserver('.animate-title', cb, { rootMargin: "0px 0px" });
 // });
 
+// //////// { once: false }を実現させるコード ////////
 
 document.addEventListener('DOMContentLoaded', function() {
-  const targets = document.querySelectorAll('.animate-title');
-  const tas = [...targets].map(node => new TextAnimation(node));
+  // 該当要素を収集する。
+  // // CSS版
+  // const targets = document.querySelectorAll('.animate-title');
+  // GSAP版
+  const targets = document.querySelectorAll('.gsap-animate-title');
+
+  // 該当要素それぞれにテキスト・アニメーションをするためんもインスタンスを生成させる。
+  // // CSS版
+  // const tas = [...targets].map(node => new TextAnimation(node));
+  // GSAP版
+  const tas = [...targets].map(node => new GsapTextAnimation(node));
+
+  // コールバック関数を仕込む
   const cb = function(el, isIntersecting) {
     if (isIntersecting) {
-      tas.forEach(ta => {
-        if (ta.DOM.el === el) {
-          ta.animate();
-        }
-      })     
+      tas.forEach(ta => { if (ta.DOM.el === el) ta.animate(); })     
     } else {
       el.classList.remove('inview');
     }
   };
-  const so = new ScrollObserver('.animate-title', cb, { once: false });
+
+  // 監視のインスタンスを生成する。
+  // // CSS版
+  // const so = new ScrollObserver('.animate-title', cb, { once: false });
+  // GSAP版
+  const so = new ScrollObserver('.gsap-animate-title', cb, { once: true });
   // 機能を停止させるメソッド
   // so.destroy();
 });

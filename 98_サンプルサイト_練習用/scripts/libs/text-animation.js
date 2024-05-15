@@ -8,6 +8,7 @@ class TextAnimation {
     this.DOM.el.innerHTML = this._splitText();
   }
   _splitText() {
+    // accumulate => 収集する、current => 現在 
     return this.chars.reduce((acc, curr) => {
       curr = curr.replace(/\s+/, '&nbsp;');
       return `${acc}<span class="char">${curr}</span>`;

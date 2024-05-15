@@ -1,6 +1,6 @@
 $pattern: (
-  "up": translateY(6px),
-  "down": translateY(-6px),
+  "up": translateY(30px),
+  "down": translateY(-30px),
   "left": translateX(40px),
   "right": translateX(-40px),
 );
@@ -15,7 +15,7 @@ $pattern: (
 
 .appear {
   & .item {
-    transition: all 1s;
+    transition: all 0.8s;
     opacity: 0;
   }
   &.inview {
@@ -25,7 +25,7 @@ $pattern: (
 
       @for $i from 1 through 10 {
         &:nth-child(#{$i}) {
-          transition-delay: 1s + $i * 0.5s;
+          transition-delay: $i * 0.2s;
         }
       }
     }
