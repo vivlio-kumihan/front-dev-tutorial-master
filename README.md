@@ -1,3 +1,91 @@
+## 00 Contents
+| key | value |||
+| ---- | ---- | ---: | ---: |
+|section1|はじめに（27分）|1日|【×1】|
+|section2|超初心者はここからスタート（32分）|1日|【×1】|
+|section3|コード記述の効率化を学ぼう（11分）|1日|【×1】|
+|section4|CSSの基礎を固めよう（Transition編）（174分）|6日|【×5.8】|
+|section5|CSSの極めよう（Animation編）（196分）|7日|【×6.5】|
+|section6|JavaScriptの基礎を固めよう！（250分）|9日|【×8.3】|
+|section7|JavaScriptのより実践的な記述について学ぼう！（176分）|6日|【×5.8】|
+|section8|スマホでもキレイに見えるレスポンシブル画面の作り方（59分）|2日|【×2】|
+|section9|本格的なWebサイトの作成（214分）|4日|【×3.6】|
+|section10|インターネットに公開してみよう（23分）|1日|【×1】|
+|section11|さいごに（1分）|1日|【×1】|
+
+## 01
+
+### 事前準備
+
+* ChromeのDL
+  * 開発環境を準備できるようにする。
+* VSCodeのDL
+  * 機能拡張のインストール
+    * live Sass Compiler
+    * live Server
+    * Prettier
+* ChatGPTのアカウント作成とブックマーク
+
+### Section1　はじめに（27分）
+
+私がこのコースでWEB STD修習を勧めているか理由を理解してもらう。
+
+1. コース紹介
+   * WEB STDの概要説明
+     * CSS, JSを学ぶ理由の理解
+2. コース準備Part.1
+   * VSCode, Chromeを使う理由の理解
+3. コース準備Part.2
+   * VSCode, Chromeを使う理由の理解
+4. プロジェクトの構成とコースの進め方
+   * ローカルでサイトを動かすことの理解
+     * 【留意点】SassをコンパイルしてCSSを生成するという説明が出てきた時は実演する。
+5. Udemyでの学習方法のアドバイス
+6. ChatGPTで疑問を解決しよう！！
+
+## 02
+
+### Section2　超初心者はここからスタート（32分）
+
+#### VSCodeのショートカットを覚える
+* 任意の単語を複数選択する
+* 任意の単語を複製する
+
+#### カスタム・スニペットの登録方法
+1. VSCodeを開く。
+1. コマンドパレットを開く（`Ctrl + Shift + P` / `Cmd + Shift + P`）。
+1. 「Preferences: Configure User Snippets」を選択。
+1. 「html.json」を選択するか、ファイルがない場合は作成する。
+
+#### inlineとblock
+要素を横に配置したい場合 inline
+要素を縦に配置したい場合 block
+
+display: inlineの要素の位置を調整するには、
+その親要素にtext-align属性を与える。
+
+display: blockの要素の位置を調整するには、
+自身にmargin: 0 auto;
+
+#### CSSの詳細度
+詳細度が深いCSSが効く。
+開発ツールで確認して解決していけばいい。
+
+
+section3　コード記述の効率化を学ぼう（11分）【×1】
+section4　CSSの基礎を固めよう（Transition編）（174分）【×5.8】
+section5　CSSの極めよう（Animation編）（196分）【×6.5】
+section6　JavaScriptの基礎を固めよう！（250分）【×8.3】
+section7　JavaScriptのより実践的な記述について学ぼう！（176分）【×5.8】
+section8　スマホでもキレイに見えるレスポンシブル画面の作り方（59分）【×2】
+section9　本格的なWebサイトの作成（214分）【×3.6】
+section10　インターネットに公開してみよう（23分）【×1】
+section11　さいごに（1分）【×1】
+
+50営業日中で終わらせる
+
+
+
 # VSCodeの拡張機能のインストール
 - Prettier - Code formatter  
   `esbenp.prettier-vscode`
