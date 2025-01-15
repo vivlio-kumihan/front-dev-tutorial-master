@@ -1,0 +1,27 @@
+@use "mq" as *;
+@use "common" as *;
+
+section {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+
+.section {
+  height: 300px;
+  margin-bottom: 10px;
+  background-color: gray;
+}
+
+.child {
+  min-width: 100px;
+  height: 100px;
+  // 意図せず上辺に10pxの空きが出てしまうのが僕は嫌だから対応する。
+  // margin: 10px;
+  background: red;
+}
+
+.child:nth-child(2) {
+  background: red;
+}

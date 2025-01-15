@@ -1,0 +1,30 @@
+body {
+  text-align: center;
+}
+
+.rect {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  animation-name: sk-bouncedelay;
+  animation-duration: 1.4s;
+  animation-delay: 3s;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.28, 1.9);
+  animation-fill-mode: forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes sk-bouncedelay {
+  from {
+    transform: scale(0);
+    background-color: black;
+  }
+  to {
+    transform: scale(1);
+    background-color: green;
+  }
+}/*# sourceMappingURL=loader.css.map */

@@ -1,23 +1,21 @@
 @use "mq" as *;
-@use "common" as *;
+h1 {
+  color: red;
+  background: yellow;
 
-// h1 {
-//   color: red;
-//   background: yellow;
+  @include mq(sm) {
+    color: blue;
+  }
 
-//   @include mq(sm) {
-//     color: blue;
-//   }
-
-//   @include mq(md) {
-//     color: purple;
-//   }
+  @include mq(md) {
+    color: purple;
+  }
   
-//   @include mq(lg) {
-//     color: green;
-//   }
+  @include mq(lg) {
+    color: green;
+  }
   
-//   @include mq(xl) {
-//     color: orange;
-//   }
-// }
+  @include mq(xl) {
+    color: orange;
+  }
+}

@@ -7,15 +7,24 @@ body {
   width: 100px;
   height: 100px;
   background-color: black;
-  animation: sk-bouncedelay 1.4s ease;
-  animation-timing-function: ease;
-  animation-delay: 3s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
+  -webkit-animation: sk-bouncedelay 1.4s ease;
+          animation: sk-bouncedelay 1.4s ease;
 }
 
 .paused {
-  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  from {
+    transform: scale(0);
+    background-color: black;
+  }
+  to {
+    transform: scale(1);
+    background-color: green;
+  }
 }
 
 @keyframes sk-bouncedelay {

@@ -1,0 +1,39 @@
+// @use 'mix_in';
+//   // 1st アンダーバーと拡張子を取り去ったファイル名で宣言。
+//   // その名前空間を@includeへ持っていく。
+
+// @use 'mix_in' as mxi;
+//   // 2nd 別名で名前空間を作る。
+
+@use 'mix_in' as *;
+  // 3rd 省略する。
+
+$cBlack: black;
+
+body {
+  text-align: center;
+}
+
+.rect {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: $cBlack;
+  // @include mix_in.animation($name: sk-bouncedelay); // 1st
+  // @include mxi.animation($name: sk-bouncedelay); // 2nd
+  @include animation($name: sk-bouncedelay); // 3rd
+}
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes sk-bouncedelay {
+  from {
+    transform: scale(0);
+    background-color: black;
+  }
+  to {
+    transform: scale(1);
+    background-color: green;
+  }
+}

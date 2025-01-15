@@ -1,47 +1,15 @@
 @charset "UTF-8";
 .try .btn {
-  display: inline-block;
   position: relative;
-  margin: 10px auto;
-  padding: 10px 40px;
-  font-weight: 600;
-  text-decoration: none !important;
-  color: black;
+  display: inline-block;
   background-color: white;
   border: 1px solid black;
+  font-weight: 600;
+  padding: 10px 40px;
+  margin: 10px auto;
   cursor: pointer;
   transition: all 0.3s;
-  /* ここにボタンのスタイルを追加していこう */
-}
-.try .btn.float:hover {
-  color: white;
-  background-color: black;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-.try .btn.filled {
-  color: white;
-  background-color: black;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-.try .btn.filled:hover {
   color: black;
-  background-color: white;
-  box-shadow: unset;
-}
-.try .btn.letter-spacing:hover {
-  letter-spacing: 0.15rem;
-  color: white;
-  background-color: black;
-}
-.try .btn.shadow:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px black;
-}
-.try .btn.solid {
-  border-radius: 7px;
-  box-shadow: 2px 2px 0px black;
-}
-.try .btn.solid:hover {
-  transform: translate(2px, 2px);
-  box-shadow: unset;
+  text-decoration: none !important;
+  /* ここにボタンのスタイルを追加していこう */
 }/*# sourceMappingURL=try.css.map */
