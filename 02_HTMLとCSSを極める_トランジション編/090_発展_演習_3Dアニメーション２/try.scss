@@ -4,8 +4,8 @@ $cBlack: black;
 #container {
   text-align: center;
 }
-.try {
-  .btn {
+.three-d-box {
+  & > .btn {
     position: relative;
     display: inline-block;
     transform-style: preserve-3d;
@@ -14,9 +14,38 @@ $cBlack: black;
     height: 50px;
     margin: 0 auto;
     cursor: pointer;
-
     &.cubic {
-      /** スタイルをここに追加。*/
+      & span {
+        display: grid;
+        place-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $cBlack;
+        background-color: $cWhite;
+        transition: all 1s;
+        transform-origin: center center -25px;
+        &.hovering {
+          transform: rotateX(90deg);
+          color: $cWhite;
+          background-color: $cBlack;
+        }
+        &.default {
+          transform: rotateX(0deg);
+          color: $cBlack;
+          background-color: $cWhite;
+        }
+      }
+      &:hover {
+        & .hovering {
+          transform: rotateX(0deg);
+        }
+        & .default {
+          transform: rotateX(-90deg);
+        }
+      }
     }
   }
 }

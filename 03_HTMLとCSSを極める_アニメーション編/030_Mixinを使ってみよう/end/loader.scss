@@ -13,6 +13,7 @@ body {
   $direction: normal,
   $fill-mode: forwards
 ) {
+  
   animation: {
     name: $name;
     duration: $duration;

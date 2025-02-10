@@ -3,35 +3,52 @@
 $cBlack: black;
 
 .three-dot-spinner {
-    text-align: center;
+  text-align: center;
 
-    & div{
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        background-color: $cBlack;
-        border-radius: 50%;
-        animation: sk-bouncedelay 1.4s infinite;
+  & div {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: $cBlack;
+    border-radius: 50%;
+    animation: sk-bouncedelay 1.4s infinite;
 
-        @for $i from 1 through 2 {
-            &:nth-child(#{$i}) {
-                animation-delay: math.div(-0.32s, $i);
-            }
-        }
+    // &:nth-child(1) {
+    //   animation-delay: -0.32s;
+    // }
+    // &:nth-child(2) {
+    //   animation-delay: -0.16s;
+    // }
+
+    // #{$i}は変数展開
+    // for文の中でセレクターを書いていることに注目。
+    // セレクターの引数として変数を展開するためにsassの記法として{}で囲む。
+    // インターポレーションというらしい。
+    // 属性の値として展開する場合は、$iでよい。
+    @for $i from 1 through 2 {
+      &:nth-child(#{$i}) {
+        // と言われてもこれはすごい書き方。calc()要らないのだ。
+        animation-delay: -0.32s / $i;
+        // image1.png, image2.png, image3.png...としていきたい場合は、
+        // urlの引数の部分での変数展開となるので#{}で囲む
+        // background-image: url(/img/image#{$i}.png);
+        // animation-delay: math.div(-0.32s, $i);
+      }
     }
+  }
 }
 
 @keyframes sk-bouncedelay {
-    0% {
-        transform: scale(0);
-    }
-    40% {
-        transform: scale(1);
-    }
-    80% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(0);
-    }
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
 }

@@ -1,0 +1,55 @@
+body {
+  text-align: center;
+}
+
+.rect {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  animation: sk-bouncedelay 1.4s;
+  animation-timing-function: ease;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: 3;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=loader.css.map */h: 40px;
+  height: 40px;
+  background-color: #904669;
+  margin: 0 auto;
+  animation-name: sk-rotateplane;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}/*# sourceMappingURL=loader.css.map */

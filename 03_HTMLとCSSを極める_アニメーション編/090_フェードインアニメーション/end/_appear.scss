@@ -1,3 +1,8 @@
+// これってグローバルmenuで使えそうだ。
+
+// 変数にmapを格納する。
+// mapを使っている。
+// mapとは何か？
 $pattern: (
   "up": translateY(6px),
   "down": translateY(-6px),
@@ -6,8 +11,10 @@ $pattern: (
 );
 
 @each $key, $value in $pattern {
+  // 変数を『セレクタ内』で使いたい場合にインタポレーションを使う。
   .appear.#{$key} {
     & .item {
+      // 属性の値で変数を展開したい場合は直書きで大丈夫。
       transform: $value;
     }
   }
@@ -15,6 +22,10 @@ $pattern: (
 
 .appear {
   & .item {
+    // 全体のアニメーションの中で、
+    // この部分だけを別にしてコントロールしたいわけ。
+    // これをmapに格納して@eachで展開する。
+    // transform: translateY(-6px);
     transition: all 0.8s;
     opacity: 0;
   }

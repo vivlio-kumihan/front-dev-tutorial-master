@@ -16,7 +16,7 @@
   position: relative;
   z-index: 1;
   transform-style: preserve-3d;
-  perspective: 300px;
+  perspective: 100px;
 }
 .btn.cover-3d span {
   display: inline-block;
@@ -31,9 +31,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotateX(90deg);
-  transition: all 0.3s;
-  transform-origin: top center;
+  transform: rotateX(-90deg);
+  transform-origin: bottom center;
+  transition: all 3s;
   opacity: 0;
 }
 .btn.cover-3d:hover {

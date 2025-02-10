@@ -1,0 +1,21 @@
+@use "global" as *;
+h1 {
+  color: $cBlue;
+}
+h2 {
+  color: $cRed;
+}
+
+// @use "child" as c1;
+// @use "child2" as c2;
+// h1 {
+//   color: c1.$cBlue;
+// }
+// h2 {
+//   color: c2.$cRed;
+// }
+
+// @use "child";
+// h1 {
+//   color: child.$cBlue;
+// }

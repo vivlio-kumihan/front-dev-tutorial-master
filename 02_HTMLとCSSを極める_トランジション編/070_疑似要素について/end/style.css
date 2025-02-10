@@ -14,7 +14,6 @@
 }
 .btn.slide-bg {
   position: relative;
-  overflow: hidden;
   z-index: 1;
 }
 .btn.slide-bg::before {
@@ -27,7 +26,7 @@
   top: 0;
   left: 0;
   transform: translateX(-100%);
-  transition: transform 0.3s;
+  transition: 0.3s cubic-bezier(0, 0.98, 0.32, 1.6);
   z-index: -1;
 }
 .btn.slide-bg:hover {

@@ -1,27 +1,25 @@
+// 名前空間として『mixin』が使われる。
+// @use "mixin";
+// 名前空間として『mxn』が使われる。
+// そしてファイル内で使うことができる。
+// @use "mixin" as mxn;
+// 『*』を使うと省略できる。
+// @use "mixin" as *;
+
+// 落とし穴あり、
+// _mixin1.scss
+// _mixin2.scss
+// があったとして、
+// @use "mixin1" as *;
+// @use "mixin2" as *;
+// というふうに書くとどちらを使ったらいいわかならなくなる。
+
+// なので通常は名前空間で管理する。
+
 $cBlack: black;
 
 body {
   text-align: center;
-}
-
-@mixin animation(
-  $name,
-  $duration: 1s,
-  $timing-function: ease,
-  $delay: 0s,
-  $iteration-count: 1,
-  $direction: normal,
-  $fill-mode: forwards
-) {
-  animation: {
-    name: $name;
-    duration: $duration;
-    timing-function: $timing-function;
-    delay: $delay;
-    iteration-count: $iteration-count;
-    direction: $direction;
-    fill-mode: $fill-mode;
-  }
 }
 
 .rect {
@@ -29,6 +27,7 @@ body {
   width: 100px;
   height: 100px;
   background-color: $cBlack;
+  // @include mxn.animation($name: sk-bouncedelay);
   @include animation($name: sk-bouncedelay);
   // animation: sk-bouncedelay 1.4s;
   // animation-timing-function: ease;

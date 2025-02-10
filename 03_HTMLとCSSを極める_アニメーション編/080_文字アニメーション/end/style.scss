@@ -33,6 +33,7 @@ body {
         $name: kf-animate-chars,
         $duration: 0.5s,
         $timing-function: cubic-bezier(0.39, 1.57, 0.58, 1),
+        // アニメーションの状態を維持するがboth
         $fill-mode: both
       );
 
@@ -48,6 +49,7 @@ body {
 @keyframes kf-animate-chars {
   0% {
     opacity: 0;
+    // transformが適用されるのはblock要素だけ。
     transform: translateY(-50%);
   }
 

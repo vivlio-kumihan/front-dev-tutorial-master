@@ -6,17 +6,23 @@ $cBlack: black;
 }
 
 .btn {
-  background-color: $cWhite;
-  color: $cBlack;
-  border: 1px solid $cBlack;
-  padding: 10px 40px;
   margin: 50px 0;
+  padding: 10px 40px;
   font-weight: 600;
+  color: $cBlack;
+  background-color: $cWhite;
+  border: 1px solid $cBlack;
   cursor: pointer;
   transition: all 0.3s;
-
-  &:hover {
-    background-color: $cBlack;
-    color: $cWhite;
+  &.float {
+    &:hover {
+      color: $cWhite;
+      background-color: $cBlack;
+      box-shadow: 8px 9px 13px rgb(0 0 0 / 45%);
+    }
   }
+  // &:hover {
+  //   color: $cWhite;
+  //   background-color: $cBlack;
+  // }
 }

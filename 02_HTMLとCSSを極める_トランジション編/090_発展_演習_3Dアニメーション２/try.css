@@ -1,9 +1,8 @@
-@charset "UTF-8";
 #container {
   text-align: center;
 }
 
-.try .btn {
+.three-d-box > .btn {
   position: relative;
   display: inline-block;
   transform-style: preserve-3d;
@@ -13,6 +12,32 @@
   margin: 0 auto;
   cursor: pointer;
 }
-.try .btn.cubic {
-  /** スタイルをここに追加。*/
+.three-d-box > .btn.cubic span {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  background-color: white;
+  transition: all 1s;
+  transform-origin: center center -25px;
+}
+.three-d-box > .btn.cubic span.hovering {
+  transform: rotateX(90deg);
+  color: white;
+  background-color: black;
+}
+.three-d-box > .btn.cubic span.default {
+  transform: rotateX(0deg);
+  color: black;
+  background-color: white;
+}
+.three-d-box > .btn.cubic:hover .hovering {
+  transform: rotateX(0deg);
+}
+.three-d-box > .btn.cubic:hover .default {
+  transform: rotateX(-90deg);
 }/*# sourceMappingURL=try.css.map */

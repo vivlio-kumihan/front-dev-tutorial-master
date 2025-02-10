@@ -1,0 +1,13 @@
+.parent {
+  color: blue;
+}
+.parent > .element {
+  color: purple;
+}
+.parent > .element:nth-child(2) {
+  color: orange;
+}
+
+.element {
+  color: red;
+}/*# sourceMappingURL=style.css.map */

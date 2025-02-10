@@ -19,7 +19,17 @@ $cBlack: black;
     position: relative;
     z-index: 1;
     transform-style: preserve-3d;
-    perspective: 300px;
+    // perspective属性
+    //   箱への視点が
+    //   1000pxだと、遠くで見るような感じ
+    //   100pxだと、近くで見ている感じ
+    perspective: 100px;
+    // perspective-origin
+    //   視点をずらす
+    //   問題は、浮かせているspan要素の文字がZ軸（前後）方向に手前に上げているから
+    //   この属性を触るととんでもないところにレイアウトされてしまう。
+    //   なのでこれは設定してはだめ。
+    // perspective-origin: 500px 500px;
 
     & span {
       display: inline-block;
@@ -35,15 +45,18 @@ $cBlack: black;
       position: absolute;
       top: 0;
       left: 0;
-      transform: rotateX(90deg);
-      transition: all 0.3s;
-      transform-origin: top center;
+      // 上辺を軸に開閉する。
+      // transform: rotateX(90deg);
+      // transform-origin: top center;
+      // 底辺を軸に開閉する。
+      transform: rotateX(-90deg);
+      transform-origin: bottom center;
+      
+      transition: all 3s;
       opacity: 0;
     }
-
     &:hover {
       color: $cWhite;
-
       &::before {
         transform: none;
         opacity: 1;

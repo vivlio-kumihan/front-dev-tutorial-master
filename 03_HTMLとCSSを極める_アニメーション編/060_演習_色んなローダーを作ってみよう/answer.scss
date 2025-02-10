@@ -32,6 +32,12 @@
 
   @keyframes sk-rotateplane {
     0% {
+      // 遠近感がなかったらこう見えない。
+      // 一つのブロック内でアニメーションがある場合、
+      // 上下にあるオブジェクトが、高さに応じて中心からのパースされて見えてしまう。
+      // そういう場合は、tryクラスにperspective: 120px;とするのではなく、
+      // アニメーションに書く。
+
       transform: perspective(120px) rotateX(0deg) rotateY(0deg);
     }
     50% {

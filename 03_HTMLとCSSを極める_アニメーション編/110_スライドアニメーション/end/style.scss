@@ -1,8 +1,25 @@
 @use "mixin" as *;
 
 img {
+  // 画像の横幅を親要素の横幅に合わせる。
   max-width: 100%;
-  vertical-align: bottom;
+  // vertical-alignとは
+  //   vertical-alignとは行中のテキストや画像などの内容の
+  // 　上下方向の揃え位置を指定するプロパティです。
+  // 　インライン要素とテーブルセルにのみ適用することができます。
+  //   以下の値で指定します。
+  //   baseline（初期値）
+  //   指定した要素のベースラインを親要素のベースラインと揃えます。
+  //   top
+  //   指定要素を上端揃えにします。
+  //   middle
+  //   指定要素を中央揃えにします。
+  //   bottom
+  //   指定要素を下端揃えにします。
+  // vertical-align: bottom;
+
+  // というか、
+  //   height: 100%;でいいのでは？
 }
 
 .cover-slide {
@@ -33,6 +50,12 @@ img {
   }
 }
 
+// なんでtransform属性で書き換えるのか？
+// パフォーマンスです。
+// レンダリング（ブラウザに描写させる処理）の工程で
+// transformを使う方がパフォーマンスがいい。
+// （transform、opacity）
+// left, rightなどレイアウトに関わる属性を使うとパフォーマンスが悪い。
 @keyframes kf-cover-slide {
   0% {
     transform-origin: left;
@@ -70,6 +93,10 @@ img {
 .img-zoom {
   opacity: 0;
 
+  // この書き方はしてない。
+  // やっていることは、
+  // .inview .img-zoom
+  // 中に入っているからと言ってインクルメントされるわけじゃない！
   .inview & {
     opacity: 1;
     transition: transform 0.3s ease;
@@ -131,12 +158,17 @@ img {
   background-position: center;
   background-size: cover;
   width: 100%;
+  // img要素、background要素それぞれに同じCSSをかけたいとき、
+  // img要素で設定した値を1行で持ってこれる@extend
+  // これは覚えないといけない。
   @extend .img-zoom;
 }
 
 .img-bg50 {
   position: relative;
-  
+  // これとても重要
+  // background要素で作るとアスペクト比に追従して画像が収縮してくれない。
+  // 解決策として以下のようにする。
   &::before {
     display: block;
     content: '';

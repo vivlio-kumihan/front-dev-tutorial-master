@@ -1,0 +1,32 @@
+$cBlack: #333;
+$cWhite: #fff;
+
+#container {
+  text-align: center;
+}
+
+.btn {
+  margin: 50px;
+  padding: 10px 40px;
+  font-weight: 900;
+  color: $cBlack;
+  background-color: $cWhite;
+  border: 2px solid $cBlack;
+  cursor: pointer;
+  transition: all .3s;
+  &:hover {
+    color: $cWhite;
+    background-color: $cBlack;
+  }
+}
+
+.parent {
+  & child {
+    &-one {
+      color: red;
+    }
+    &-two {
+      color: blue;
+    }
+  }
+}
