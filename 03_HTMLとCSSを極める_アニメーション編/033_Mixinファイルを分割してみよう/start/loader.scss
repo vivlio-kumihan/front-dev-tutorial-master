@@ -1,10 +1,10 @@
 // 名前空間として『mixin』が使われる。
-// @use "mixin";
+// @use "mixin"; 
 // 名前空間として『mxn』が使われる。
 // そしてファイル内で使うことができる。
 // @use "mixin" as mxn;
 // 『*』を使うと省略できる。
-// @use "mixin" as *;
+@use "mixin" as *;
 
 // 落とし穴あり、
 // _mixin1.scss
