@@ -28,7 +28,9 @@ $cBlack: black;
     @for $i from 1 through 2 {
       &:nth-child(#{$i}) {
         // と言われてもこれはすごい書き方。calc()要らないのだ。
-        animation-delay: -0.32s / $i;
+        animation-delay: calc(-0.32s / $i);
+        // animation-delay: -0.32s / $i;
+        
         // image1.png, image2.png, image3.png...としていきたい場合は、
         // urlの引数の部分での変数展開となるので#{}で囲む
         // background-image: url(/img/image#{$i}.png);

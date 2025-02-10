@@ -4,9 +4,9 @@ img {
   // 画像の横幅を親要素の横幅に合わせる。
   max-width: 100%;
   // vertical-alignとは
+  // 　インライン要素とテーブルセルにのみ適用することができます。
   //   vertical-alignとは行中のテキストや画像などの内容の
   // 　上下方向の揃え位置を指定するプロパティです。
-  // 　インライン要素とテーブルセルにのみ適用することができます。
   //   以下の値で指定します。
   //   baseline（初期値）
   //   指定した要素のベースラインを親要素のベースラインと揃えます。
@@ -17,30 +17,36 @@ img {
   //   bottom
   //   指定要素を下端揃えにします。
   // vertical-align: bottom;
+}
 
-  // というか、
-  //   height: 100%;でいいのでは？
+.image-one {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
 }
 
 .cover-slide {
   position: relative;
+  width: 800px;
+  height: 400px;
   overflow: hidden;
 
   &::after {
-    content: "";
     position: absolute;
-    z-index: 2;
+    content: "";
+    // アニメーションの都合で四辺から幕を引っ張っているイメージ。
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #eaebe6;
+    background-color: orange;
     opacity: 0;
+    z-index: 2;
   }
   &.inview {
     &::after {
       opacity: 1;
-
       @include animation(
         $name: kf-cover-slide,
         $duration: 1.6s,
@@ -75,29 +81,17 @@ img {
   }
 }
 
-// @keyframes kf-cover-slide {
-//   0% {
-//     left: 0;
-//     right: 100%;
-//   }
-//   50% {
-//     left: 0;
-//     right: 0;
-//   }
-//   100% {
-//     left: 100%;
-//     right: 0;
-//   }
-// }
+.image-one.hover-darken {
+  & .img-zoom {
+    opacity: 1;
+  }
+}
 
-.img-zoom {
-  opacity: 0;
-
-  // この書き方はしてない。
-  // やっていることは、
-  // .inview .img-zoom
-  // 中に入っているからと言ってインクルメントされるわけじゃない！
-  .inview & {
+.cover-slide.hover-darken {
+  & .img-zoom {
+    opacity: 0;
+  }
+  &.inview .img-zoom {
     opacity: 1;
     transition: transform 0.3s ease;
     @include animation(
@@ -106,7 +100,6 @@ img {
       $timing-function: ease-in-out,
       $fill-mode: none
     );
-
     &:hover {
       transform: scale(1.05);
     }
@@ -131,15 +124,15 @@ img {
 
 .hover-darken {
   &::before {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    content: "";
     transition: background-color 0.3s ease;
     pointer-events: none;
+    z-index: 1;
     @include animation(
       $name: kf-img-show,
       $duration: 1.6s,
@@ -153,22 +146,22 @@ img {
 }
 
 .bg-img-zoom {
-  background-image: url(images/image-1.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  @include bg($image: "../images/image-1.jpg");
+  opacity: 0;
   width: 100%;
-  // img要素、background要素それぞれに同じCSSをかけたいとき、
-  // img要素で設定した値を1行で持ってこれる@extend
-  // これは覚えないといけない。
+  transition: all .7s;
+  // 共通させたい設定を@extendを使って呼び込む
   @extend .img-zoom;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .img-bg50 {
   position: relative;
-  // これとても重要
-  // background要素で作るとアスペクト比に追従して画像が収縮してくれない。
-  // 解決策として以下のようにする。
+  // background要素で作ると
+  // アスペクト比に追従して画像が収縮しない。
+  // 解決策として以下のようなTipsを使う。
   &::before {
     display: block;
     content: '';
